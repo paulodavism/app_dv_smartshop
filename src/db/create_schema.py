@@ -6,26 +6,18 @@ from dotenv import load_dotenv
 # Carrega variáveis do .env
 load_dotenv()
 
-# Configurações do arquivo .env
-DB_NAME = os.getenv("DB_NAME")
-DB_USER = os.getenv("DB_USER")
-DB_PASS = os.getenv("DB_PASS")
-DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT")
+# Configuração do Neon
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Verificação obrigatória
-if None in (DB_NAME, DB_USER, DB_PASS, DB_HOST, DB_PORT):
+if not DATABASE_URL:
     raise ValueError("""
-    ⚠️ Variáveis de ambiente não configuradas corretamente!
+    ⚠️ Variável de ambiente DATABASE_URL não configurada corretamente!
     Verifique seu arquivo .env e certifique-se que contém:
-    DB_NAME=...
-    DB_USER=...
-    DB_PASS=...
-    DB_HOST=...
-    DB_PORT=...
+    DATABASE_URL=postgres://user:password@host:port/database
     """)
 
-# SQL para criar tabelas
+# SQL para criar tabelas (mantenha o mesmo que você já tem)
 SQL_SCHEMA = """
 CREATE TABLE IF NOT EXISTS deposito (
     id SERIAL PRIMARY KEY,
@@ -43,23 +35,17 @@ CREATE TABLE IF NOT EXISTS estoque (
     sku VARCHAR(50) REFERENCES produto(sku) ON DELETE CASCADE,
     deposito_id INTEGER REFERENCES deposito(id) ON DELETE CASCADE,
     quantidade INTEGER NOT NULL CHECK (quantidade >= 0),
-    tipo VARCHAR(50) NOT NULL DEFAULT 'Entrada', -- Alterado para VARCHAR(50)
+    tipo VARCHAR(50) NOT NULL DEFAULT 'Entrada',
     data_hora TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     observacoes VARCHAR(200),
-    saldo INTEGER NOT NULL DEFAULT 0 -- Adicionado coluna saldo
+    saldo INTEGER NOT NULL DEFAULT 0
 );
 """
 
 def create_schema():
     try:
-        # Conexão ao banco de dados
-        conn = psycopg2.connect(
-            dbname=DB_NAME,
-            user=DB_USER,
-            password=DB_PASS,
-            host=DB_HOST,
-            port=DB_PORT
-        )
+        # Conexão ao banco de dados usando a URL do Neon
+        conn = psycopg2.connect(DATABASE_URL)
         conn.autocommit = True
         cur = conn.cursor()
         
