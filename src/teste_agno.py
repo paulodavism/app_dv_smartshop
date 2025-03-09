@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     #GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
-    GROQ_API_KEY="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"
+    GROQ_API_KEY="KEY"
     os.environ['GROQ_API_KEY'] = GROQ_API_KEY
 
     # Chama a função e armazena o resultado
