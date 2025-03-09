@@ -1,0 +1,28 @@
+# app_dv_smartshop/.gitignore
+
+# Environments
+venv/
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Logs e dados
+*.log
+*.sqlite
+*.csv
+*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Bancos de dados
+*.db       # SQLite
+*.sqlite   # SQLite
+*.sql      # Dumps SQL
+*.bak      # Backups
+/pgdata/   # Pasta de dados do PostgreSQL (se usada localmente)
+

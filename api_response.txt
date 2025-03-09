@@ -1,0 +1,5589 @@
+[
+  {
+    "payments": [
+      {
+        "reason": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+        "status_code": null,
+        "total_paid_amount": 14.57,
+        "operation_type": "regular_payment",
+        "transaction_amount": 14.57,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T16:02:56.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103746732126,
+        "date_last_modified": "2025-03-02T08:05:00.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T16:02:52.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 265701151,
+        "order_id": 2000010891233358,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      },
+      {
+        "reason": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+        "status_code": null,
+        "total_paid_amount": 116.97,
+        "operation_type": "regular_payment",
+        "transaction_amount": 99.43,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T16:02:56.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 12,
+        "authorization_code": "6H2OAK",
+        "taxes_amount": 0,
+        "id": 103345370769,
+        "date_last_modified": "2025-03-02T08:05:01.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 9.75,
+        "date_created": "2025-02-28T16:02:52.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9061928926,
+        "status_detail": "accredited",
+        "issuer_id": "12510",
+        "payment_method_id": "visa",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 265701151,
+        "order_id": 2000010891233358,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T16:02:57.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44547795047
+    },
+    "date_closed": "2025-02-28T16:02:57.000-04:00",
+    "id": 2000010891233358,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB4519436306",
+          "title": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+          "category_id": "MLB12549",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCALIBPORTCZK"
+        },
+        "quantity": 1,
+        "unit_price": 114,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 13.68,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRPE01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T12:05:07+00:00",
+    "last_updated": "2025-03-02T08:05:07.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T16:02:51.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 265701151,
+      "nickname": "JOSEMBERGUEMOREIRADADILVA"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 114,
+    "paid_amount": 114,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Central Multimidia 9pol 2gb 32gb Quadcore Carplay E Android",
+        "status_code": null,
+        "total_paid_amount": 427.5,
+        "operation_type": "regular_payment",
+        "transaction_amount": 427.5,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T16:32:37.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103750100406,
+        "date_last_modified": "2025-03-01T13:19:55.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T16:32:37.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 787418721,
+        "order_id": 2000010891467090,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T16:32:38.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44547900497
+    },
+    "date_closed": "2025-02-28T16:32:38.000-04:00",
+    "id": 2000010891467090,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5262092024",
+          "title": "Central Multimidia 9pol 2gb 32gb Quadcore Carplay E Android",
+          "category_id": "MLB135679",
+          "variation_id": 182787414318,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "40491280",
+              "value_name": "Preto"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVMULTIMIDIA9_2_32"
+        },
+        "quantity": 1,
+        "unit_price": 427.5,
+        "full_unit_price": 950,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 51.3,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP14",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T17:20:16+00:00",
+    "last_updated": "2025-03-01T13:20:15.000-04:00",
+    "comment": null,
+    "pack_id": 2000007285832345,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T16:31:53.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 787418721,
+      "nickname": "MARIOCESARDEPAIVAEOLIVEIRA"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 427.5,
+    "paid_amount": 427.5,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+        "status_code": null,
+        "total_paid_amount": 114,
+        "operation_type": "regular_payment",
+        "transaction_amount": 114,
+        "transaction_amount_refunded": 0,
+        "date_approved": null,
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103750558958,
+        "date_last_modified": "2025-02-28T16:41:09.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          ""
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T16:37:38.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "by_payer",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 2298515628,
+        "order_id": 2000010891503666,
+        "currency_id": "BRL",
+        "status": "cancelled",
+        "transaction_order_id": null
+      },
+      {
+        "reason": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+        "status_code": null,
+        "total_paid_amount": 114,
+        "operation_type": "regular_payment",
+        "transaction_amount": 114,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T16:42:18.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103349743685,
+        "date_last_modified": "2025-03-01T12:42:01.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T16:41:03.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": "1"
+        },
+        "site_id": "MLB",
+        "payer_id": 2298515628,
+        "order_id": 2000010891503666,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T16:42:18.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548128220
+    },
+    "date_closed": "2025-02-28T16:42:18.000-04:00",
+    "id": 2000010891503666,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB4519436306",
+          "title": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+          "category_id": "MLB12549",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCALIBPORTCZK"
+        },
+        "quantity": 1,
+        "unit_price": 114,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 13.68,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSC02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T16:42:07+00:00",
+    "last_updated": "2025-03-01T12:42:06.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T16:37:38.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "new_buyer_free_shipping",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 2298515628,
+      "nickname": "RW20250228162911"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 114,
+    "paid_amount": 114,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": [
+        "new_buyer_free_shipping"
+      ]
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Colchão Inflável Casal Premium + Bomba De Ar.",
+        "status_code": null,
+        "total_paid_amount": 201.16,
+        "operation_type": "regular_payment",
+        "transaction_amount": 177.48,
+        "transaction_amount_refunded": 0,
+        "date_approved": null,
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 4,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103349785015,
+        "date_last_modified": "2025-02-28T16:40:51.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          ""
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 50.29,
+        "date_created": "2025-02-28T16:40:49.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "cc_rejected_insufficient_amount",
+        "issuer_id": "12518",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 5676147,
+        "order_id": 2000010891548052,
+        "currency_id": "BRL",
+        "status": "rejected",
+        "transaction_order_id": null
+      },
+      {
+        "reason": "Colchão Inflável Casal Premium + Bomba De Ar.",
+        "status_code": null,
+        "total_paid_amount": 177.48,
+        "operation_type": "regular_payment",
+        "transaction_amount": 177.48,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T16:42:46.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": "600586",
+        "taxes_amount": 0,
+        "id": 103751419004,
+        "date_last_modified": "2025-03-01T11:53:21.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 177.48,
+        "date_created": "2025-02-28T16:42:44.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9568852116,
+        "status_detail": "accredited",
+        "issuer_id": "12518",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 5676147,
+        "order_id": 2000010891548052,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T16:42:46.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44547933227
+    },
+    "date_closed": "2025-02-28T16:42:46.000-04:00",
+    "id": 2000010891548052,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5116413188",
+          "title": "Colchão Inflável Casal Premium + Bomba De Ar.",
+          "category_id": "MLB4216",
+          "variation_id": 181911912440,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52028",
+              "value_name": "Azul"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCOLCHAO01"
+        },
+        "quantity": 1,
+        "unit_price": 177.48,
+        "full_unit_price": 246.5,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 20.41,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSC02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T15:53:28+00:00",
+    "last_updated": "2025-03-01T11:53:27.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T16:40:49.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 5676147,
+      "nickname": "CARLOS VERDÃO"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 177.48,
+    "paid_amount": 177.48,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Central Multimidia 7 Polegadas 2gb 32gb Quadcore Carplay E Android Sem Fio Wi Fi Waze Sportfy Universal 2 Din",
+        "status_code": null,
+        "total_paid_amount": 414,
+        "operation_type": "regular_payment",
+        "transaction_amount": 414,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T16:53:15.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103752347504,
+        "date_last_modified": "2025-03-01T16:39:28.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T16:53:15.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 404193132,
+        "order_id": 2000010891633084,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T16:53:16.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548181994
+    },
+    "date_closed": "2025-02-28T16:53:16.000-04:00",
+    "id": 2000010891633084,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5298595576",
+          "title": "Central Multimidia 7 Polegadas 2gb 32gb Quadcore Carplay E Android Sem Fio Wi Fi Waze Sportfy Universal 2 Din",
+          "category_id": "MLB135679",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVMULTIMIDIA7_2_32"
+        },
+        "quantity": 1,
+        "unit_price": 414,
+        "full_unit_price": 920,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 49.68,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSC02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T20:39:31+00:00",
+    "last_updated": "2025-03-01T16:39:30.000-04:00",
+    "comment": null,
+    "pack_id": 2000007285940413,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T16:53:13.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "catalog",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 404193132,
+      "nickname": "ALEXSANDERKRAISZIKLEAL"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 414,
+    "paid_amount": 414,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": [
+        "catalog"
+      ]
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Colchão Inflável Casal Premium + Bomba De Ar.",
+        "status_code": null,
+        "total_paid_amount": 195.87,
+        "operation_type": "regular_payment",
+        "transaction_amount": 177.48,
+        "transaction_amount_refunded": 177.48,
+        "date_approved": "2025-02-28T16:57:59.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 2,
+        "authorization_code": "905709",
+        "taxes_amount": 0,
+        "id": 103753020556,
+        "date_last_modified": "2025-02-28T17:07:45.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          ""
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 97.94,
+        "date_created": "2025-02-28T16:57:57.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "bpp_refunded",
+        "issuer_id": "12518",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 349565528,
+        "order_id": 2000010891669328,
+        "currency_id": "BRL",
+        "status": "refunded",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": false,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": null,
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44547992293
+    },
+    "date_closed": "2025-02-28T16:57:59.000-04:00",
+    "id": 2000010891669328,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5116413188",
+          "title": "Colchão Inflável Casal Premium + Bomba De Ar.",
+          "category_id": "MLB4216",
+          "variation_id": 181911912440,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52028",
+              "value_name": "Azul"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCOLCHAO01"
+        },
+        "quantity": 1,
+        "unit_price": 177.48,
+        "full_unit_price": 246.5,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 20.41,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-02-28T21:07:50+00:00",
+    "last_updated": "2025-02-28T17:07:49.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T16:57:56.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "not_delivered",
+      "not_paid"
+    ],
+    "buyer": {
+      "id": 349565528,
+      "nickname": "TEAN2539414"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 177.48,
+    "paid_amount": 0,
+    "mediations": [
+      {
+        "id": 5346911090
+      }
+    ],
+    "currency_id": "BRL",
+    "status": "cancelled",
+    "cancel_detail": {
+      "group": "buyer",
+      "code": "buyer_cancel_express",
+      "description": "There is a mediation with status cancel_purchase",
+      "requested_by": "buyer",
+      "date": "2025-02-28T16:59:27.000-04:00",
+      "application_id": "2945779824588159"
+    },
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+        "status_code": null,
+        "total_paid_amount": 114,
+        "operation_type": "regular_payment",
+        "transaction_amount": 114,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T17:11:25.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103754254360,
+        "date_last_modified": "2025-03-01T09:45:42.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T17:07:11.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": "1"
+        },
+        "site_id": "MLB",
+        "payer_id": 230459759,
+        "order_id": 2000010891744582,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T17:11:25.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548231180
+    },
+    "date_closed": "2025-02-28T17:11:25.000-04:00",
+    "id": 2000010891744582,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB4519436306",
+          "title": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+          "category_id": "MLB12549",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCALIBPORTCZK"
+        },
+        "quantity": 1,
+        "unit_price": 114,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 13.68,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRBA01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T13:45:45+00:00",
+    "last_updated": "2025-03-01T09:45:45.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T17:07:10.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 230459759,
+      "nickname": "HELENA DERO"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 114,
+    "paid_amount": 114,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Colchão Inflável Casal Premium + Bomba De Ar.",
+        "status_code": null,
+        "total_paid_amount": 195.87,
+        "operation_type": "regular_payment",
+        "transaction_amount": 177.48,
+        "transaction_amount_refunded": 0,
+        "date_approved": null,
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 2,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103753505966,
+        "date_last_modified": "2025-02-28T17:02:00.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          ""
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 97.94,
+        "date_created": "2025-02-28T17:01:58.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9562501591,
+        "status_detail": "cc_rejected_insufficient_amount",
+        "issuer_id": "12518",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 349565528,
+        "order_id": 2000010891689756,
+        "currency_id": "BRL",
+        "status": "rejected",
+        "transaction_order_id": null
+      },
+      {
+        "reason": "Colchão Inflável Casal Premium + Bomba De Ar.",
+        "status_code": null,
+        "total_paid_amount": 195.87,
+        "operation_type": "regular_payment",
+        "transaction_amount": 177.48,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T17:18:12.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 2,
+        "authorization_code": "725395",
+        "taxes_amount": 0,
+        "id": 103755338792,
+        "date_last_modified": "2025-03-01T16:44:51.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 97.94,
+        "date_created": "2025-02-28T17:18:10.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9562501591,
+        "status_detail": "accredited",
+        "issuer_id": "12518",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 349565528,
+        "order_id": 2000010891689756,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T17:18:12.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548212804
+    },
+    "date_closed": "2025-02-28T17:18:12.000-04:00",
+    "id": 2000010891689756,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5116413188",
+          "title": "Colchão Inflável Casal Premium + Bomba De Ar.",
+          "category_id": "MLB4216",
+          "variation_id": 181911912440,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52028",
+              "value_name": "Azul"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCOLCHAO01"
+        },
+        "quantity": 1,
+        "unit_price": 177.48,
+        "full_unit_price": 246.5,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 20.41,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP04",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T20:44:55+00:00",
+    "last_updated": "2025-03-01T16:44:54.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T17:01:57.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 349565528,
+      "nickname": "TEAN2539414"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 177.48,
+    "paid_amount": 177.48,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+        "status_code": null,
+        "total_paid_amount": 118.8,
+        "operation_type": "regular_payment",
+        "transaction_amount": 118.8,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T17:28:14.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103756570920,
+        "date_last_modified": "2025-03-01T14:36:51.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T17:26:33.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": "1"
+        },
+        "site_id": "MLB",
+        "payer_id": 1120252757,
+        "order_id": 2000010891887080,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T17:28:15.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548297772
+    },
+    "date_closed": "2025-02-28T17:28:15.000-04:00",
+    "id": 2000010891887080,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5213093324",
+          "title": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+          "category_id": "MLB442420",
+          "variation_id": 182466679018,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "198812",
+              "value_name": "110V/220V"
+            },
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": null,
+              "value_name": "50"
+            },
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52049",
+              "value_name": "Preto"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVLAVADORASTANDARD"
+        },
+        "quantity": 1,
+        "unit_price": 118.8,
+        "full_unit_price": 180,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 14.26,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSC02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T18:36:55+00:00",
+    "last_updated": "2025-03-01T14:36:54.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T17:26:32.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 1120252757,
+      "nickname": "DAMARINEZ20220705173827"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 118.8,
+    "paid_amount": 118.8,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+        "status_code": null,
+        "total_paid_amount": 118.8,
+        "operation_type": "regular_payment",
+        "transaction_amount": 118.8,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T17:38:53.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103356744365,
+        "date_last_modified": "2025-03-02T09:33:07.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T17:38:52.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 287160768,
+        "order_id": 2000010891990066,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T17:38:53.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548343388
+    },
+    "date_closed": "2025-02-28T17:38:53.000-04:00",
+    "id": 2000010891990066,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5213093324",
+          "title": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+          "category_id": "MLB442420",
+          "variation_id": 182466679018,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "198812",
+              "value_name": "110V/220V"
+            },
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": null,
+              "value_name": "50"
+            },
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52049",
+              "value_name": "Preto"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVLAVADORASTANDARD"
+        },
+        "quantity": 1,
+        "unit_price": 118.8,
+        "full_unit_price": 180,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 14.26,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP04",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T13:35:06+00:00",
+    "last_updated": "2025-03-02T09:35:05.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T17:38:52.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 287160768,
+      "nickname": "MARCELOALEXANDRE19782"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 118.8,
+    "paid_amount": 118.8,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Colchão Inflável Casal Premium + Bomba De Ar.",
+        "status_code": null,
+        "total_paid_amount": 177.48,
+        "operation_type": "regular_payment",
+        "transaction_amount": 177.48,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T17:51:33.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": "769049",
+        "taxes_amount": 0,
+        "id": 103358350433,
+        "date_last_modified": "2025-03-01T12:38:07.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 177.48,
+        "date_created": "2025-02-28T17:51:30.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9217464411,
+        "status_detail": "accredited",
+        "issuer_id": "12518",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 78628922,
+        "order_id": 2000010892072964,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T17:51:33.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548179231
+    },
+    "date_closed": "2025-02-28T17:51:33.000-04:00",
+    "id": 2000010892072964,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5116413188",
+          "title": "Colchão Inflável Casal Premium + Bomba De Ar.",
+          "category_id": "MLB4216",
+          "variation_id": 181911912440,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52028",
+              "value_name": "Azul"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCOLCHAO01"
+        },
+        "quantity": 1,
+        "unit_price": 177.48,
+        "full_unit_price": 246.5,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 20.41,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T16:38:11+00:00",
+    "last_updated": "2025-03-01T12:38:10.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T17:51:29.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 78628922,
+      "nickname": "RENATHHO_MC"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 177.48,
+    "paid_amount": 177.48,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Colchão Inflável Casal Premium + Bomba De Ar.",
+        "status_code": null,
+        "total_paid_amount": 177.48,
+        "operation_type": "regular_payment",
+        "transaction_amount": 177.48,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T18:11:20.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": "045964",
+        "taxes_amount": 0,
+        "id": 103360542075,
+        "date_last_modified": "2025-03-01T14:59:55.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 177.48,
+        "date_created": "2025-02-28T18:11:18.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9268966857,
+        "status_detail": "accredited",
+        "issuer_id": "24",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 216569335,
+        "order_id": 2000010892236064,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T18:11:20.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548242313
+    },
+    "date_closed": "2025-02-28T18:11:20.000-04:00",
+    "id": 2000010892236064,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5116413188",
+          "title": "Colchão Inflável Casal Premium + Bomba De Ar.",
+          "category_id": "MLB4216",
+          "variation_id": 181911912440,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52028",
+              "value_name": "Azul"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCOLCHAO01"
+        },
+        "quantity": 1,
+        "unit_price": 177.48,
+        "full_unit_price": 246.5,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 20.41,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP04",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T18:59:58+00:00",
+    "last_updated": "2025-03-01T14:59:58.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T18:11:17.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 216569335,
+      "nickname": "OLIV2599"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 177.48,
+    "paid_amount": 177.48,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+        "status_code": null,
+        "total_paid_amount": 118.8,
+        "operation_type": "regular_payment",
+        "transaction_amount": 118.8,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T18:22:46.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103361759897,
+        "date_last_modified": "2025-03-01T17:44:55.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T18:22:46.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 226096180,
+        "order_id": 2000010892301760,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T18:22:47.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548485678
+    },
+    "date_closed": "2025-02-28T18:22:47.000-04:00",
+    "id": 2000010892301760,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5213093324",
+          "title": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+          "category_id": "MLB442420",
+          "variation_id": 182466679018,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": null,
+              "value_name": "50"
+            },
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52049",
+              "value_name": "Preto"
+            },
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "198812",
+              "value_name": "110V/220V"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVLAVADORASTANDARD"
+        },
+        "quantity": 1,
+        "unit_price": 118.8,
+        "full_unit_price": 180,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 14.26,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP04",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T21:44:55+00:00",
+    "last_updated": "2025-03-01T17:44:55.000-04:00",
+    "comment": null,
+    "pack_id": 2000007286384135,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T18:22:45.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "paid",
+      "delivered",
+      "bundle"
+    ],
+    "buyer": {
+      "id": 226096180,
+      "nickname": "PEJO2604728"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 118.8,
+    "paid_amount": 118.8,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Furadeira Parafusadeira Gambit Kit Profissional Com Maleta",
+        "status_code": null,
+        "total_paid_amount": 140.3,
+        "operation_type": "regular_payment",
+        "transaction_amount": 140.3,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T18:28:10.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103763846774,
+        "date_last_modified": "2025-03-03T16:26:31.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T18:27:09.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": "1"
+        },
+        "site_id": "MLB",
+        "payer_id": 2202414282,
+        "order_id": 2000010892329482,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T18:28:10.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548293389
+    },
+    "date_closed": "2025-02-28T18:28:10.000-04:00",
+    "id": 2000010892329482,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB3857077621",
+          "title": "Furadeira Parafusadeira Gambit Kit Profissional Com Maleta",
+          "category_id": "MLB189007",
+          "variation_id": 181730613304,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": "7923771",
+              "value_name": "50 Hz/60 Hz"
+            },
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "51993",
+              "value_name": "Vermelho"
+            },
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "39205163",
+              "value_name": "127/220V"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVPARAFUSA01"
+        },
+        "quantity": 1,
+        "unit_price": 140.3,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 8.42,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRDF01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-03T20:26:32+00:00",
+    "last_updated": "2025-03-03T16:26:31.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T18:27:08.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 2202414282,
+      "nickname": "MB20250108133230"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 140.3,
+    "paid_amount": 140.3,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Colchão Inflável Casal Premium + Bomba De Ar.",
+        "status_code": null,
+        "total_paid_amount": 207.14,
+        "operation_type": "regular_payment",
+        "transaction_amount": 177.48,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T18:46:23.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 10,
+        "authorization_code": "468810",
+        "taxes_amount": 0,
+        "id": 103364885223,
+        "date_last_modified": "2025-03-02T11:03:11.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 20.71,
+        "date_created": "2025-02-28T18:46:21.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9470408593,
+        "status_detail": "accredited",
+        "issuer_id": "12518",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 1153508972,
+        "order_id": 2000010892492260,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T18:46:23.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548357433
+    },
+    "date_closed": "2025-02-28T18:46:23.000-04:00",
+    "id": 2000010892492260,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5116413188",
+          "title": "Colchão Inflável Casal Premium + Bomba De Ar.",
+          "category_id": "MLB4216",
+          "variation_id": 181911912440,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52028",
+              "value_name": "Azul"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCOLCHAO01"
+        },
+        "quantity": 1,
+        "unit_price": 177.48,
+        "full_unit_price": 246.5,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 20.41,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRBA01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T15:03:12+00:00",
+    "last_updated": "2025-03-02T11:03:11.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T18:46:20.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 1153508972,
+      "nickname": "DIASAUGUSTO20220702192217"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 177.48,
+    "paid_amount": 177.48,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Furadeira Parafusadeira Gambit Kit Profissional Com Maleta",
+        "status_code": null,
+        "total_paid_amount": 140.3,
+        "operation_type": "regular_payment",
+        "transaction_amount": 140.3,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T18:58:53.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103767849382,
+        "date_last_modified": "2025-03-03T17:42:42.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T18:58:52.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 464943317,
+        "order_id": 2000010892594776,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T18:58:53.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548605604
+    },
+    "date_closed": "2025-02-28T18:58:53.000-04:00",
+    "id": 2000010892594776,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB3857077621",
+          "title": "Furadeira Parafusadeira Gambit Kit Profissional Com Maleta",
+          "category_id": "MLB189007",
+          "variation_id": 181730613304,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "51993",
+              "value_name": "Vermelho"
+            },
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": "7923771",
+              "value_name": "50 Hz/60 Hz"
+            },
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "39205163",
+              "value_name": "127/220V"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVPARAFUSA01"
+        },
+        "quantity": 1,
+        "unit_price": 140.3,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 8.42,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSC02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-03T21:42:45+00:00",
+    "last_updated": "2025-03-03T17:42:43.000-04:00",
+    "comment": null,
+    "pack_id": 2000007286556155,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T18:58:51.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 464943317,
+      "nickname": "ATHOSMARINS"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 140.3,
+    "paid_amount": 140.3,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+        "status_code": null,
+        "total_paid_amount": 114,
+        "operation_type": "regular_payment",
+        "transaction_amount": 114,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T19:38:07.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103371186155,
+        "date_last_modified": "2025-03-01T14:17:54.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T19:38:06.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 104950138,
+        "order_id": 2000010892890846,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T19:38:07.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548733064
+    },
+    "date_closed": "2025-02-28T19:38:07.000-04:00",
+    "id": 2000010892890846,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB4519436306",
+          "title": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+          "category_id": "MLB12549",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCALIBPORTCZK"
+        },
+        "quantity": 1,
+        "unit_price": 114,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 13.68,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 2,
+        "stock": {
+          "node_id": "BRSP04",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T18:17:57+00:00",
+    "last_updated": "2025-03-01T14:17:56.000-04:00",
+    "comment": null,
+    "pack_id": 2000007286765743,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T19:38:05.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 104950138,
+      "nickname": "GENARIR"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 114,
+    "paid_amount": 114,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Central Multimidia 9pol 2gb 32gb Quadcore Carplay E Android",
+        "status_code": null,
+        "total_paid_amount": 469.87,
+        "operation_type": "regular_payment",
+        "transaction_amount": 427.5,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T19:49:14.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 3,
+        "authorization_code": "126184",
+        "taxes_amount": 0,
+        "id": 103773614014,
+        "date_last_modified": "2025-03-02T13:06:20.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 156.62,
+        "date_created": "2025-02-28T19:49:12.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 8040232101,
+        "status_detail": "accredited",
+        "issuer_id": "12530",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 203332278,
+        "order_id": 2000010892970534,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T19:49:14.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548562719
+    },
+    "date_closed": "2025-02-28T19:49:14.000-04:00",
+    "id": 2000010892970534,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5262092024",
+          "title": "Central Multimidia 9pol 2gb 32gb Quadcore Carplay E Android",
+          "category_id": "MLB135679",
+          "variation_id": 182787414318,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "40491280",
+              "value_name": "Preto"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVMULTIMIDIA9_2_32"
+        },
+        "quantity": 1,
+        "unit_price": 427.5,
+        "full_unit_price": 950,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 51.3,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP14",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T17:06:22+00:00",
+    "last_updated": "2025-03-02T13:06:21.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T19:49:11.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 203332278,
+      "nickname": "AMJO139006"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 427.5,
+    "paid_amount": 427.5,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Central Multimidia 7 Polegadas 2gb 32gb Quadcore Carplay E Android Sem Fio Wi Fi Waze Sportfy Universal 2 Din",
+        "status_code": null,
+        "total_paid_amount": 414,
+        "operation_type": "regular_payment",
+        "transaction_amount": 414,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T20:06:53.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103775671812,
+        "date_last_modified": "2025-03-02T08:48:47.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T20:06:53.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 2163043807,
+        "order_id": 2000010893116058,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T20:06:54.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548826600
+    },
+    "date_closed": "2025-02-28T20:06:54.000-04:00",
+    "id": 2000010893116058,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5298595576",
+          "title": "Central Multimidia 7 Polegadas 2gb 32gb Quadcore Carplay E Android Sem Fio Wi Fi Waze Sportfy Universal 2 Din",
+          "category_id": "MLB135679",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVMULTIMIDIA7_2_32"
+        },
+        "quantity": 1,
+        "unit_price": 414,
+        "full_unit_price": 920,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 49.68,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 2,
+        "stock": {
+          "node_id": "BRPE01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T12:48:50+00:00",
+    "last_updated": "2025-03-02T08:48:49.000-04:00",
+    "comment": null,
+    "pack_id": 2000007286912587,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T20:06:49.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "catalog",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 2163043807,
+      "nickname": "GS20241217181654"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 414,
+    "paid_amount": 414,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": [
+        "catalog"
+      ]
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+        "status_code": null,
+        "total_paid_amount": 114,
+        "operation_type": "regular_payment",
+        "transaction_amount": 114,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T20:50:33.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103780113704,
+        "date_last_modified": "2025-03-01T16:31:07.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T20:49:42.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": "1"
+        },
+        "site_id": "MLB",
+        "payer_id": 1887091527,
+        "order_id": 2000010893401916,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T20:50:33.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548959790
+    },
+    "date_closed": "2025-02-28T20:50:33.000-04:00",
+    "id": 2000010893401916,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB4519436306",
+          "title": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+          "category_id": "MLB12549",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCALIBPORTCZK"
+        },
+        "quantity": 1,
+        "unit_price": 114,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 13.68,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRRJ01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T20:31:09+00:00",
+    "last_updated": "2025-03-01T16:31:08.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T20:49:41.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 1887091527,
+      "nickname": "BB20240705215957"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 114,
+    "paid_amount": 114,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Furadeira Parafusadeira Gambit Kit Profissional Com Maleta",
+        "status_code": null,
+        "total_paid_amount": 154.84,
+        "operation_type": "regular_payment",
+        "transaction_amount": 140.3,
+        "transaction_amount_refunded": 0,
+        "date_approved": null,
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 2,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103781674654,
+        "date_last_modified": "2025-02-28T21:03:57.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          ""
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 77.42,
+        "date_created": "2025-02-28T21:03:55.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9544947332,
+        "status_detail": "cc_rejected_bad_filled_security_code",
+        "issuer_id": "687",
+        "payment_method_id": "elo",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": "127978501",
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 1340243998,
+        "order_id": 2000010893514960,
+        "currency_id": "BRL",
+        "status": "rejected",
+        "transaction_order_id": null
+      },
+      {
+        "reason": "Furadeira Parafusadeira Gambit Kit Profissional Com Maleta",
+        "status_code": null,
+        "total_paid_amount": 154.84,
+        "operation_type": "regular_payment",
+        "transaction_amount": 140.3,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T21:06:49.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 2,
+        "authorization_code": "679071",
+        "taxes_amount": 0,
+        "id": 103380563761,
+        "date_last_modified": "2025-03-04T14:41:17.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 77.42,
+        "date_created": "2025-02-28T21:06:47.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9544947332,
+        "status_detail": "accredited",
+        "issuer_id": "687",
+        "payment_method_id": "elo",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 1340243998,
+        "order_id": 2000010893514960,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T21:06:49.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548796723
+    },
+    "date_closed": "2025-02-28T21:06:49.000-04:00",
+    "id": 2000010893514960,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB3857077621",
+          "title": "Furadeira Parafusadeira Gambit Kit Profissional Com Maleta",
+          "category_id": "MLB189007",
+          "variation_id": 181730613304,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "51993",
+              "value_name": "Vermelho"
+            },
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": "7923771",
+              "value_name": "50 Hz/60 Hz"
+            },
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "39205163",
+              "value_name": "127/220V"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVPARAFUSA01"
+        },
+        "quantity": 1,
+        "unit_price": 140.3,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 8.42,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSC02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-04T18:41:19+00:00",
+    "last_updated": "2025-03-04T14:41:18.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T21:03:54.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 1340243998,
+      "nickname": "PERESENDREO20230327215921"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 140.3,
+    "paid_amount": 140.3,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Lavadora Portátil Premium Com Bateria Max De Longa Duração",
+        "status_code": null,
+        "total_paid_amount": 138.6,
+        "operation_type": "regular_payment",
+        "transaction_amount": 138.6,
+        "transaction_amount_refunded": 138.6,
+        "date_approved": "2025-02-28T21:12:25.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103782546122,
+        "date_last_modified": "2025-03-02T09:15:16.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          ""
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T21:12:25.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "bpp_covered",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 827827022,
+        "order_id": 2000010893580672,
+        "currency_id": "BRL",
+        "status": "refunded",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": false,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T21:12:26.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548819451
+    },
+    "date_closed": "2025-02-28T21:12:26.000-04:00",
+    "id": 2000010893580672,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5219645906",
+          "title": "Lavadora Portátil Premium Com Bateria Max De Longa Duração",
+          "category_id": "MLB442420",
+          "variation_id": 186422809753,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52049",
+              "value_name": "Preto"
+            },
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "39205163",
+              "value_name": "127/220V"
+            },
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": "8219789",
+              "value_name": "50 Hz"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVLAVADORAPREMIUM"
+        },
+        "quantity": 1,
+        "unit_price": 138.6,
+        "full_unit_price": 220,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 16.63,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 2,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T13:20:36+00:00",
+    "last_updated": "2025-03-02T09:15:18.000-04:00",
+    "comment": null,
+    "pack_id": 2000007287216981,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T21:11:47.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "delivered",
+      "not_paid"
+    ],
+    "buyer": {
+      "id": 827827022,
+      "nickname": "CANEVALEALESSANDRA"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 138.6,
+    "paid_amount": 0,
+    "mediations": [
+      {
+        "id": 5347130496
+      }
+    ],
+    "currency_id": "BRL",
+    "status": "cancelled",
+    "cancel_detail": {
+      "group": "mediations",
+      "code": "mediations",
+      "description": "Mediations cancel the order",
+      "requested_by": "meli",
+      "date": "2025-03-02T09:15:15.000-04:00",
+      "application_id": "2945779824588159"
+    },
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Central Multimidia 7 Polegadas 2gb 32gb Quadcore Carplay E Android Sem Fio Wi Fi Waze Sportfy Universal 2 Din",
+        "status_code": null,
+        "total_paid_amount": 471.09,
+        "operation_type": "regular_payment",
+        "transaction_amount": 414,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T21:29:32.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 7,
+        "authorization_code": "963477",
+        "taxes_amount": 0,
+        "id": 103783863554,
+        "date_last_modified": "2025-03-02T09:23:46.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 67.3,
+        "date_created": "2025-02-28T21:29:30.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9121043300,
+        "status_detail": "accredited",
+        "issuer_id": "12523",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 35987138,
+        "order_id": 2000010893689282,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T21:29:32.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549077410
+    },
+    "date_closed": "2025-02-28T21:29:32.000-04:00",
+    "id": 2000010893689282,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5298595576",
+          "title": "Central Multimidia 7 Polegadas 2gb 32gb Quadcore Carplay E Android Sem Fio Wi Fi Waze Sportfy Universal 2 Din",
+          "category_id": "MLB135679",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVMULTIMIDIA7_2_32"
+        },
+        "quantity": 1,
+        "unit_price": 414,
+        "full_unit_price": 920,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 49.68,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP04",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T13:23:50+00:00",
+    "last_updated": "2025-03-02T09:23:49.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T21:29:29.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "catalog",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 35987138,
+      "nickname": "EDUDOMINGOS10"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 414,
+    "paid_amount": 414,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": [
+        "catalog"
+      ]
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Central Multimidia 9pol 2gb 32gb Quadcore Carplay E Android",
+        "status_code": null,
+        "total_paid_amount": 427.5,
+        "operation_type": "regular_payment",
+        "transaction_amount": 427.5,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T21:34:47.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103383031095,
+        "date_last_modified": "2025-03-01T12:39:01.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T21:34:47.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 80689880,
+        "order_id": 2000010893736900,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T21:34:47.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549092106
+    },
+    "date_closed": "2025-02-28T21:34:47.000-04:00",
+    "id": 2000010893736900,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5262092024",
+          "title": "Central Multimidia 9pol 2gb 32gb Quadcore Carplay E Android",
+          "category_id": "MLB135679",
+          "variation_id": 182787414318,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "40491280",
+              "value_name": "Preto"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVMULTIMIDIA9_2_32"
+        },
+        "quantity": 1,
+        "unit_price": 427.5,
+        "full_unit_price": 950,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 51.3,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T16:39:11+00:00",
+    "last_updated": "2025-03-01T12:39:04.000-04:00",
+    "comment": null,
+    "pack_id": 2000007287334511,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T21:34:44.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "paid",
+      "delivered",
+      "bundle"
+    ],
+    "buyer": {
+      "id": 80689880,
+      "nickname": "EDYSUL"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 427.5,
+    "paid_amount": 427.5,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+        "status_code": null,
+        "total_paid_amount": 118.8,
+        "operation_type": "regular_payment",
+        "transaction_amount": 118.8,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T21:37:55.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103383300415,
+        "date_last_modified": "2025-03-02T07:36:26.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T21:37:55.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 1322930029,
+        "order_id": 2000010893756652,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T21:37:56.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549100522
+    },
+    "date_closed": "2025-02-28T21:37:56.000-04:00",
+    "id": 2000010893756652,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5213093324",
+          "title": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+          "category_id": "MLB442420",
+          "variation_id": 182466679018,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "198812",
+              "value_name": "110V/220V"
+            },
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52049",
+              "value_name": "Preto"
+            },
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": null,
+              "value_name": "50"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVLAVADORASTANDARD"
+        },
+        "quantity": 1,
+        "unit_price": 118.8,
+        "full_unit_price": 180,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 14.26,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRBA01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T11:36:31+00:00",
+    "last_updated": "2025-03-02T07:36:30.000-04:00",
+    "comment": null,
+    "pack_id": 2000007287353465,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T21:37:53.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "b2b",
+      "pack_order",
+      "order_has_discount",
+      "paid",
+      "delivered",
+      "bundle"
+    ],
+    "buyer": {
+      "id": 1322930029,
+      "nickname": "ASSOCIACAOASSOCIACAO2023030404"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 118.8,
+    "paid_amount": 118.8,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": [
+        "b2b"
+      ]
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Lavadora Portátil Premium Com Bateria Max De Longa Duração Sem Fio Ar Condicionado Carros Motos",
+        "status_code": null,
+        "total_paid_amount": 138.6,
+        "operation_type": "regular_payment",
+        "transaction_amount": 138.6,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T21:39:30.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103383357491,
+        "date_last_modified": "2025-03-02T15:26:17.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T21:39:30.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 26979065,
+        "order_id": 2000010893763732,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T21:39:31.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548898811
+    },
+    "date_closed": "2025-02-28T21:39:31.000-04:00",
+    "id": 2000010893763732,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB3982265221",
+          "title": "Lavadora Portátil Premium Com Bateria Max De Longa Duração Sem Fio Ar Condicionado Carros Motos",
+          "category_id": "MLB442420",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVLAVADORAPREMIUM"
+        },
+        "quantity": 1,
+        "unit_price": 138.6,
+        "full_unit_price": 220,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 16.63,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T19:26:18+00:00",
+    "last_updated": "2025-03-02T15:26:17.000-04:00",
+    "comment": null,
+    "pack_id": 2000007287354551,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T21:39:28.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "catalog",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 26979065,
+      "nickname": "BAGACERA"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 138.6,
+    "paid_amount": 138.6,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": [
+        "catalog"
+      ]
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+        "status_code": null,
+        "total_paid_amount": 118.8,
+        "operation_type": "regular_payment",
+        "transaction_amount": 118.8,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T21:52:13.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": "001042",
+        "taxes_amount": 0,
+        "id": 103785813260,
+        "date_last_modified": "2025-03-01T16:47:39.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 118.8,
+        "date_created": "2025-02-28T21:52:11.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9296788309,
+        "status_detail": "accredited",
+        "issuer_id": "12",
+        "payment_method_id": "master",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 209000281,
+        "order_id": 2000010893854332,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T21:52:13.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548933635
+    },
+    "date_closed": "2025-02-28T21:52:13.000-04:00",
+    "id": 2000010893854332,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5213093324",
+          "title": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+          "category_id": "MLB442420",
+          "variation_id": 182466679018,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "198812",
+              "value_name": "110V/220V"
+            },
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": null,
+              "value_name": "50"
+            },
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52049",
+              "value_name": "Preto"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVLAVADORASTANDARD"
+        },
+        "quantity": 1,
+        "unit_price": 118.8,
+        "full_unit_price": 180,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 14.26,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRDF01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T20:47:43+00:00",
+    "last_updated": "2025-03-01T16:47:41.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T21:52:10.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 209000281,
+      "nickname": "BARBOSAGOMESBRUNO"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 118.8,
+    "paid_amount": 118.8,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+        "status_code": null,
+        "total_paid_amount": 118.8,
+        "operation_type": "regular_payment",
+        "transaction_amount": 118.8,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T21:56:23.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103786157494,
+        "date_last_modified": "2025-03-02T09:23:05.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T21:55:39.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": "1"
+        },
+        "site_id": "MLB",
+        "payer_id": 2292510678,
+        "order_id": 2000010893869198,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T21:56:24.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44548943019
+    },
+    "date_closed": "2025-02-28T21:56:24.000-04:00",
+    "id": 2000010893869198,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5213093324",
+          "title": "Lavadora Portátil Para Carros Quintal Pressão Recarregável",
+          "category_id": "MLB442420",
+          "variation_id": 182466679018,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "198812",
+              "value_name": "110V/220V"
+            },
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52049",
+              "value_name": "Preto"
+            },
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": null,
+              "value_name": "50"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVLAVADORASTANDARD"
+        },
+        "quantity": 1,
+        "unit_price": 118.8,
+        "full_unit_price": 180,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 14.26,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRPE01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T13:23:10+00:00",
+    "last_updated": "2025-03-02T09:23:09.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T21:55:38.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 2292510678,
+      "nickname": "EM20250225212142"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 118.8,
+    "paid_amount": 118.8,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Central Multimidia 9pol 2gb 32gb Quadcore Carplay E Android",
+        "status_code": null,
+        "total_paid_amount": 427.5,
+        "operation_type": "regular_payment",
+        "transaction_amount": 427.5,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T22:07:08.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103385762741,
+        "date_last_modified": "2025-03-04T11:25:09.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T22:06:51.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": "1"
+        },
+        "site_id": "MLB",
+        "payer_id": 101586344,
+        "order_id": 2000010893935974,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T22:07:08.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549178694
+    },
+    "date_closed": "2025-02-28T22:07:08.000-04:00",
+    "id": 2000010893935974,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5262092024",
+          "title": "Central Multimidia 9pol 2gb 32gb Quadcore Carplay E Android",
+          "category_id": "MLB135679",
+          "variation_id": 182787414318,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "40491280",
+              "value_name": "Preto"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVMULTIMIDIA9_2_32"
+        },
+        "quantity": 1,
+        "unit_price": 427.5,
+        "full_unit_price": 950,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 51.3,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRPE01",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-04T15:25:15+00:00",
+    "last_updated": "2025-03-04T11:25:13.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T22:06:51.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 101586344,
+      "nickname": "LUCASEMANUEL27"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 427.5,
+    "paid_amount": 427.5,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Parafusadeira Furadeira Bateria 12v Bivolt Vermelha Frequência 50 Hz/60 Hz 110v/220v",
+        "status_code": null,
+        "total_paid_amount": 48.72,
+        "operation_type": "regular_payment",
+        "transaction_amount": 48.72,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T22:18:35.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103386426915,
+        "date_last_modified": "2025-03-03T13:51:08.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T22:18:33.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 1123761348,
+        "order_id": 2000010894007658,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      },
+      {
+        "reason": "Parafusadeira Furadeira Bateria 12v Bivolt Vermelha Frequência 50 Hz/60 Hz 110v/220v",
+        "status_code": null,
+        "total_paid_amount": 91.58,
+        "operation_type": "regular_payment",
+        "transaction_amount": 91.58,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T22:18:35.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103787972736,
+        "date_last_modified": "2025-03-03T13:51:08.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T22:18:33.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": null,
+        "payment_method_id": "consumer_credits",
+        "payment_type": "digital_currency",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": "954722862",
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 1123761348,
+        "order_id": 2000010894007658,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T22:18:35.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549208296
+    },
+    "date_closed": "2025-02-28T22:18:35.000-04:00",
+    "id": 2000010894007658,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB3981019121",
+          "title": "Parafusadeira Furadeira Bateria 12v Bivolt Vermelha Frequência 50 Hz/60 Hz 110v/220v",
+          "category_id": "MLB189007",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVPARAFUSA01"
+        },
+        "quantity": 1,
+        "unit_price": 140.3,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 8.42,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-03T17:51:15+00:00",
+    "last_updated": "2025-03-03T13:51:14.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T22:18:32.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "catalog",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 1123761348,
+      "nickname": "LOPESPAULO20220514115542"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 140.3,
+    "paid_amount": 140.3,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": [
+        "catalog"
+      ]
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Lavadora Portátil Premium Com Bateria Max De Longa Duração",
+        "status_code": null,
+        "total_paid_amount": 138.6,
+        "operation_type": "regular_payment",
+        "transaction_amount": 138.6,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T22:24:00.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103386796525,
+        "date_last_modified": "2025-03-01T12:01:25.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T22:23:24.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": "1"
+        },
+        "site_id": "MLB",
+        "payer_id": 40785645,
+        "order_id": 2000010894062098,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T22:24:01.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549013539
+    },
+    "date_closed": "2025-02-28T22:24:01.000-04:00",
+    "id": 2000010894062098,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5219645906",
+          "title": "Lavadora Portátil Premium Com Bateria Max De Longa Duração",
+          "category_id": "MLB442420",
+          "variation_id": 186422809753,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Voltagem",
+              "id": "VOLTAGE",
+              "value_id": "39205163",
+              "value_name": "127/220V"
+            },
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52049",
+              "value_name": "Preto"
+            },
+            {
+              "name": "Frequência",
+              "id": "FREQUENCY",
+              "value_id": "8219789",
+              "value_name": "50 Hz"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVLAVADORAPREMIUM"
+        },
+        "quantity": 1,
+        "unit_price": 138.6,
+        "full_unit_price": 220,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 16.63,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T16:01:28+00:00",
+    "last_updated": "2025-03-01T12:01:26.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T22:23:23.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 40785645,
+      "nickname": "DANIEL FARIA."
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 138.6,
+    "paid_amount": 138.6,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+        "status_code": null,
+        "total_paid_amount": 114,
+        "operation_type": "regular_payment",
+        "transaction_amount": 114,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T22:59:57.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103389178331,
+        "date_last_modified": "2025-03-02T10:13:22.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T22:59:57.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 210259105,
+        "order_id": 2000010894262204,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T22:59:58.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549098613
+    },
+    "date_closed": "2025-02-28T22:59:58.000-04:00",
+    "id": 2000010894262204,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB4519436306",
+          "title": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+          "category_id": "MLB12549",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCALIBPORTCZK"
+        },
+        "quantity": 1,
+        "unit_price": 114,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 13.68,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 3,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-02T14:13:27+00:00",
+    "last_updated": "2025-03-02T10:13:25.000-04:00",
+    "comment": null,
+    "pack_id": 2000007287691397,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T22:59:54.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 210259105,
+      "nickname": "HELLENCRISTINAMACIELCARDOSO"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 114,
+    "paid_amount": 114,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Colchão Inflável Casal Premium + Bomba De Ar.",
+        "status_code": null,
+        "total_paid_amount": 177.48,
+        "operation_type": "regular_payment",
+        "transaction_amount": 177.48,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T23:04:44.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103790840310,
+        "date_last_modified": "2025-03-01T14:31:57.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T23:04:44.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "accredited",
+        "issuer_id": "2007",
+        "payment_method_id": "account_money",
+        "payment_type": "account_money",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 1515834340,
+        "order_id": 2000010894284692,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T23:04:44.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549315064
+    },
+    "date_closed": "2025-02-28T23:04:44.000-04:00",
+    "id": 2000010894284692,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB5116413188",
+          "title": "Colchão Inflável Casal Premium + Bomba De Ar.",
+          "category_id": "MLB4216",
+          "variation_id": 181911912440,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [
+            {
+              "name": "Cor",
+              "id": "COLOR",
+              "value_id": "52028",
+              "value_name": "Azul"
+            }
+          ],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCOLCHAO01"
+        },
+        "quantity": 1,
+        "unit_price": 177.48,
+        "full_unit_price": 246.5,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 20.41,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 2,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-01T18:31:59+00:00",
+    "last_updated": "2025-03-01T14:31:58.000-04:00",
+    "comment": null,
+    "pack_id": 2000007287707559,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T23:04:40.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "pack_order",
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 1515834340,
+      "nickname": "APARECIDAMONICA20231017213104"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 177.48,
+    "paid_amount": 177.48,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Parafusadeira Furadeira Bateria 12v Bivolt Vermelha Frequência 50 Hz/60 Hz 110v/220v",
+        "status_code": null,
+        "total_paid_amount": 140.3,
+        "operation_type": "regular_payment",
+        "transaction_amount": 140.3,
+        "transaction_amount_refunded": 140.3,
+        "date_approved": "2025-02-28T23:31:54.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 1,
+        "authorization_code": null,
+        "taxes_amount": 0,
+        "id": 103792278260,
+        "date_last_modified": "2025-03-03T16:53:57.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          ""
+        ],
+        "shipping_cost": 0,
+        "installment_amount": null,
+        "date_created": "2025-02-28T23:31:05.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": null,
+        "status_detail": "bpp_covered",
+        "issuer_id": "12501",
+        "payment_method_id": "pix",
+        "payment_type": "bank_transfer",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": null,
+          "company_id": "1"
+        },
+        "site_id": "MLB",
+        "payer_id": 1312891060,
+        "order_id": 2000010894410208,
+        "currency_id": "BRL",
+        "status": "refunded",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": false,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T23:31:54.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549160225
+    },
+    "date_closed": "2025-02-28T23:31:54.000-04:00",
+    "id": 2000010894410208,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB3981019121",
+          "title": "Parafusadeira Furadeira Bateria 12v Bivolt Vermelha Frequência 50 Hz/60 Hz 110v/220v",
+          "category_id": "MLB189007",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVPARAFUSA01"
+        },
+        "quantity": 1,
+        "unit_price": 140.3,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 8.42,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP02",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-03T20:54:01+00:00",
+    "last_updated": "2025-03-03T16:53:59.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T23:31:04.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "catalog",
+      "not_delivered",
+      "not_paid"
+    ],
+    "buyer": {
+      "id": 1312891060,
+      "nickname": "RODRIGUESREGINALDO202302172007"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 140.3,
+    "paid_amount": 0,
+    "currency_id": "BRL",
+    "status": "cancelled",
+    "cancel_detail": {
+      "group": "shipment",
+      "code": "shipment_not_delivered",
+      "description": "The shipment was not delivered",
+      "requested_by": "meli",
+      "date": "2025-03-03T16:53:56.000-04:00",
+      "application_id": "2945779824588159"
+    },
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": [
+        "catalog"
+      ]
+    }
+  },
+  {
+    "payments": [
+      {
+        "reason": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+        "status_code": null,
+        "total_paid_amount": 131.36,
+        "operation_type": "regular_payment",
+        "transaction_amount": 115.9,
+        "transaction_amount_refunded": 0,
+        "date_approved": "2025-02-28T23:56:13.000-04:00",
+        "collector": {
+          "id": 1632609735
+        },
+        "coupon_id": null,
+        "installments": 4,
+        "authorization_code": "FMPJN1",
+        "taxes_amount": 0,
+        "id": 103391974551,
+        "date_last_modified": "2025-03-05T08:06:01.000-04:00",
+        "coupon_amount": 0,
+        "available_actions": [
+          "refund"
+        ],
+        "shipping_cost": 0,
+        "installment_amount": 32.84,
+        "date_created": "2025-02-28T23:56:12.000-04:00",
+        "activation_uri": null,
+        "overpaid_amount": 0,
+        "card_id": 9122744730,
+        "status_detail": "accredited",
+        "issuer_id": "12510",
+        "payment_method_id": "visa",
+        "payment_type": "credit_card",
+        "deferred_period": null,
+        "atm_transfer_reference": {
+          "transaction_id": "9991024",
+          "company_id": null
+        },
+        "site_id": "MLB",
+        "payer_id": 181580050,
+        "order_id": 2000010894489832,
+        "currency_id": "BRL",
+        "status": "approved",
+        "transaction_order_id": null
+      }
+    ],
+    "fulfilled": true,
+    "taxes": {
+      "amount": null,
+      "currency_id": null,
+      "id": null
+    },
+    "order_request": {
+      "change": null,
+      "return": null
+    },
+    "expiration_date": "2025-03-28T23:56:13.000-04:00",
+    "feedback": {
+      "buyer": null,
+      "seller": null
+    },
+    "shipping": {
+      "id": 44549203929
+    },
+    "date_closed": "2025-02-28T23:56:13.000-04:00",
+    "id": 2000010894489832,
+    "manufacturing_ending_date": null,
+    "order_items": [
+      {
+        "item": {
+          "id": "MLB4519436306",
+          "title": "Calibrador Compressor Pneu Digital Carro Bike Moto Sem Fio",
+          "category_id": "MLB12549",
+          "variation_id": null,
+          "seller_custom_field": null,
+          "global_price": null,
+          "net_weight": null,
+          "variation_attributes": [],
+          "warranty": "Garantia do vendedor: 90 dias",
+          "condition": "new",
+          "seller_sku": "DVCALIBPORTCZK"
+        },
+        "quantity": 1,
+        "unit_price": 115.9,
+        "full_unit_price": 190,
+        "currency_id": "BRL",
+        "manufacturing_days": null,
+        "picked_quantity": null,
+        "requested_quantity": {
+          "measure": "unit",
+          "value": 1
+        },
+        "sale_fee": 13.91,
+        "listing_type_id": "gold_special",
+        "base_exchange_rate": null,
+        "base_currency_id": null,
+        "bundle": null,
+        "element_id": 1,
+        "stock": {
+          "node_id": "BRSP04",
+          "store_id": null
+        }
+      }
+    ],
+    "date_last_updated": "2025-03-05T12:06:03+00:00",
+    "last_updated": "2025-03-05T08:06:02.000-04:00",
+    "comment": null,
+    "pack_id": null,
+    "coupon": {
+      "amount": 0,
+      "id": null
+    },
+    "shipping_cost": null,
+    "date_created": "2025-02-28T23:56:11.000-04:00",
+    "date_created_ttl": null,
+    "pickup_id": null,
+    "status_detail": null,
+    "tags": [
+      "order_has_discount",
+      "paid",
+      "delivered"
+    ],
+    "buyer": {
+      "id": 181580050,
+      "nickname": "BARBOSAPAULOSILVA"
+    },
+    "seller": {
+      "id": 1632609735,
+      "nickname": "DVSMARTSHOP"
+    },
+    "total_amount": 115.9,
+    "paid_amount": 115.9,
+    "currency_id": "BRL",
+    "status": "paid",
+    "context": {
+      "application": null,
+      "product_id": null,
+      "channel": "marketplace",
+      "site": "MLB",
+      "flows": []
+    }
+  }
+]

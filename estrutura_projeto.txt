@@ -1,0 +1,35 @@
+./
+├── .gitignore
+├── .vscode/
+|   ├── settings.json
+├── data/
+├── estrutura_projeto.txt
+├── requirements.txt
+├── src/
+|   ├── .env
+|   ├── api/
+|   |   ├── amazon.py
+|   |   ├── mercadolivre.py
+|   |   ├── __init__.py
+|   ├── config.py
+|   ├── db/
+|   |   ├── create_schema.py
+|   |   ├── crud_depositos.py
+|   |   ├── crud_estoque.py
+|   |   ├── crud_produtos.py
+|   |   ├── database.py
+|   |   ├── models.py
+|   |   ├── __pycache__/
+|   ├── main.py
+|   ├── main_old.py
+|   ├── modules/
+|   |   ├── depositos.py
+|   |   ├── estoque.py
+|   |   ├── produtos.py
+|   ├── utils/
+|   ├── __init__.py
+|   ├── __pycache__/
+├── tests/
+├── test_connection.py
+├── test_db.py
+├── venv/
