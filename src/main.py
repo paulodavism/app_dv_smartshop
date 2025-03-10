@@ -237,7 +237,7 @@ def exibir_visao_integrada(apis):
 
         st.markdown("---")
         if st.button("🔄 Atualizar Dados", help="Recarregar todos os dados", use_container_width=True):
-            #carregar_dados_completos.clear() #Removi essa linha, pois não é necessário limpar o cache
+            carregar_dados_completos.clear() 
             st.session_state.atualizar_dados = True
             st.rerun()
 
@@ -646,14 +646,15 @@ def exibir_gestao_estoque():
                     sku = produto_map[produto_nome]
                     deposito_id = deposito_map[st.session_state.deposito_nome]
                     saldo_atual = consultar_saldo(sku, deposito_id)  # Função a ser implementada
-                    st.write(f"**{produto_nome} - Saldo atual: {saldo_atual}**")
+                    #st.write(f"**{produto_nome} - Saldo atual: {saldo_atual}**")
+                    st.markdown(f"{produto_nome} - Saldo atual (Origem): <span style='color:green; font-weight:bold;'>{saldo_atual}</span>", unsafe_allow_html=True)
                     col1, col2 = st.columns([1, 3])
                     with col1:
                         quantidades[produto_nome] = st.number_input(f"Quantidade*", step=1, min_value=1, max_value=100000, key=f"quantidade_{produto_nome}")
                     with col2:
                         observacoes[produto_nome] = st.text_input(f"Observações", key=f"observacoes_{produto_nome}")
 
-                col1, col2, col3 = st.columns([1,1,15])
+                col1, col2, col3 = st.columns([1,1,10])
                 with col1:
                     if st.form_submit_button("💾 Salvar"):
                         deposito_id = deposito_map[st.session_state.deposito_nome]
@@ -778,7 +779,7 @@ def exibir_gestao_estoque():
                         observacoes[produto_nome] = st.text_input(f"Observações", key=f"observacoes_{produto_nome}", value=f"Transferência: {st.session_state.origem_nome} para {st.session_state.destino_nome} - Coleta FULL")
                     st.markdown("---")    
 
-                col1, col2, col3 = st.columns([1,1,15])
+                col1, col2, col3 = st.columns([1,1,10])
                 with col1:
                     if st.form_submit_button("✅ Transferir"):
                         origem_id = deposito_map[st.session_state.origem_nome]
