@@ -20,7 +20,6 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.utils import get_column_letter
 
 
-
 # Configuração de logging
 logging.basicConfig(
     level=logging.INFO,
