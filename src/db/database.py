@@ -16,7 +16,10 @@ parsed_url = urlparse(DATABASE_URL)
 if parsed_url.scheme == "postgres":
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")
 
-engine = create_engine(DATABASE_URL, echo=True)
+#engine = create_engine(DATABASE_URL, echo=True)
+# Configuração para SSL
+ssl_mode = 'require'  # Ou 'verify-full' dependendo da sua necessidade
+engine = create_engine(DATABASE_URL, echo=True, connect_args={'sslmode': ssl_mode})
 
 def init_db():
     """Cria todas as tabelas no banco de dados"""
