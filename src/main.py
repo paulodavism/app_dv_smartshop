@@ -715,13 +715,25 @@ def exibir_gestao_estoque():
             # Obtenha o ID do depósito de origem selecionado
             origem_id = deposito_map[origem_nome]
 
+            # *** OTIMIZAÇÃO: Carrega os saldos de todos os produtos em todos os depósitos de uma vez ***
+            @st.cache_data(ttl=600)  # Cache por 10 minutos
+            def carregar_saldos():
+                saldos = {}
+                for produto_nome, sku in produto_map.items():
+                    for deposito_nome, deposito_id in deposito_map.items():
+                        saldo = consultar_saldo(sku, deposito_id)
+                        saldos[(sku, deposito_id)] = saldo
+                return saldos
+
+            saldos = carregar_saldos()
+
             # Filtre os produtos que têm saldo maior que zero no depósito de origem
-            produtos_disponiveis = []
-            for produto_nome, sku in produto_map.items():
-                saldo = consultar_saldo(sku, origem_id)
-                if saldo > 0:
-                    produtos_disponiveis.append(produto_nome)
-                    
+            produtos_disponiveis = [
+                produto_nome
+                for produto_nome, sku in produto_map.items()
+                if saldos[(sku, origem_id)] > 0
+            ]
+
             if not produtos_disponiveis:
                 st.warning("Não há produtos com saldo disponível neste depósito.")
             else:
@@ -730,7 +742,6 @@ def exibir_gestao_estoque():
                                                         key="produtos_multiselect",
                                                         placeholder="Selecione os produtos para transferência"
                                                       )
-                                    
 
             destino_nome = st.selectbox("Destino*", options=list(deposito_map.keys()),
                                         index=list(deposito_map.keys()).index(destino_nome_default),
