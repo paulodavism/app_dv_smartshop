@@ -351,45 +351,6 @@ def consultar_estoque(sku=None, deposito_id=None):
         print(f"Erro ao consultar estoque: {str(e)}")
         return 0, []    
 
-def consultar_estoque_old(sku=None, deposito_id=None):
-    """
-    Consulta o estoque com base nos parâmetros fornecidos.
-    
-    Args:
-        sku (str, opcional): O SKU do produto a ser consultado. Se None, consulta todos os produtos.
-        deposito_id (int, opcional): O ID do depósito a ser consultado. Se None, consulta todos os depósitos.
-    
-    Returns:
-        tuple: Total de itens encontrados e uma lista detalhada de registros.
-    """
-    try:
-        with get_session() as db:
-            statement = select(Estoque, Deposito.nome.label("Depósito"), Produto.nome.label("Produto")).join(Deposito, Estoque.deposito_id == Deposito.id).join(Produto, Estoque.sku == Produto.sku)
-            
-            if sku:
-                statement = statement.where(Estoque.sku == sku)
-            if deposito_id:
-                statement = statement.where(Estoque.deposito_id == deposito_id)
-            
-            resultados = db.exec(statement).all()
-            
-            detalhado = [
-                {
-                    "Depósito": registro.Depósito,
-                    "SKU": registro.Estoque.sku,
-                    "Nome do Produto": registro.Produto,
-                    "Quantidade": int(registro.Estoque.quantidade)
-                }
-                for registro in resultados
-            ]
-            
-            total = len(detalhado)
-            return total, detalhado
-    
-    except Exception as e:
-        print(f"Erro ao consultar estoque: {str(e)}")
-        return 0, []        
-
 
 def consultar_historico_movimentacoes(
     sku: Optional[str] = None,
