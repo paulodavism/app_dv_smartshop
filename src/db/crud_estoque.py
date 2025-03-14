@@ -4,6 +4,8 @@ from datetime import datetime
 from .models import Estoque, Deposito, Produto, TipoEstoque
 from src.db.database import get_session
 from sqlalchemy import func, and_
+from functools import lru_cache
+from sqlalchemy.orm import aliased
 import logging
 
 # Configuração básica do logging
@@ -291,7 +293,88 @@ def transferir_estoque(
         
         return None, None  # Retorna None em caso de falha
     
-def consultar_estoque(sku=None, deposito_id=None):
+
+
+@lru_cache(maxsize=128)
+def consultar_estoque(sku=None, deposito_id=None, limit=1000):
+    """
+    Consulta o estoque, retornando o saldo atual com base no registro mais recente.
+    
+    Args:
+        sku (str, opcional): O SKU do produto a ser consultado. Se None, consulta todos os produtos.
+        deposito_id (int, opcional): O ID do depósito a ser consultado. Se None, consulta todos os depósitos.
+        limit (int, opcional): Limite de registros a serem retornados. Padrão é 1000.
+    
+    Returns:
+        tuple: Total de itens encontrados e uma lista detalhada de registros com o saldo atual.
+    """
+    try:
+        with get_session() as db:
+            # Criando aliases para as tabelas
+            EstoqueAlias = aliased(Estoque)
+            DepositoAlias = aliased(Deposito)
+            ProdutoAlias = aliased(Produto)
+
+            # Subquery para encontrar a data/hora mais recente de cada SKU e depósito
+            subquery = (
+                select(
+                    EstoqueAlias.sku,
+                    EstoqueAlias.deposito_id,
+                    func.max(EstoqueAlias.data_hora).label("max_data_hora")
+                )
+                .group_by(EstoqueAlias.sku, EstoqueAlias.deposito_id)
+                .subquery()
+            )
+
+            # Query principal
+            stmt = (
+                select(
+                    Estoque,
+                    DepositoAlias.nome.label("Depósito"),
+                    ProdutoAlias.nome.label("Produto")
+                )
+                .join(DepositoAlias, Estoque.deposito_id == DepositoAlias.id)
+                .join(ProdutoAlias, Estoque.sku == ProdutoAlias.sku)
+                .join(
+                    subquery,
+                    and_(
+                        Estoque.sku == subquery.c.sku,
+                        Estoque.deposito_id == subquery.c.deposito_id,
+                        Estoque.data_hora == subquery.c.max_data_hora
+                    )
+                )
+            )
+
+            if sku:
+                stmt = stmt.where(Estoque.sku == sku)
+            if deposito_id:
+                stmt = stmt.where(Estoque.deposito_id == deposito_id)
+
+            stmt = stmt.limit(limit)
+
+            resultados = db.execute(stmt).all()
+            
+            detalhado = [
+                {
+                    "Depósito": registro.Depósito,
+                    "SKU": registro.Estoque.sku,
+                    "Nome do Produto": registro.Produto,
+                    "Quantidade": int(registro.Estoque.saldo)
+                }
+                for registro in resultados
+            ]
+            
+            total = len(detalhado)
+            return total, detalhado
+    
+    except Exception as e:
+        print(f"Erro ao consultar estoque: {str(e)}")
+        return 0, []
+
+
+
+
+def consultar_estoque_old(sku=None, deposito_id=None):
     """
     Consulta o estoque, retornando o saldo atual com base no registro mais recente.
     
