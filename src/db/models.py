@@ -1,6 +1,7 @@
 from sqlmodel import SQLModel, Field, Relationship
 from typing import Optional, List
 from datetime import datetime
+from zoneinfo import ZoneInfo  # novo import para timezone
 from enum import Enum
 
 class TipoEstoque(str, Enum):
@@ -29,7 +30,8 @@ class Estoque(SQLModel, table=True):
     deposito_id: int = Field(foreign_key="deposito.id")
     quantidade: int
     tipo: str = Field(default="Entrada", max_length=50)  # Alterado para str
-    data_hora: datetime = Field(default_factory=datetime.now)
+    #data_hora: datetime = Field(default_factory=datetime.now)
+    data_hora: datetime = Field(default_factory=lambda: datetime.now(ZoneInfo("America/Sao_Paulo")))
     observacoes: Optional[str] = Field(default=None, max_length=200)
     saldo: int = Field(default=0)  # Adicione este campo
     

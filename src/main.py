@@ -5,6 +5,8 @@ from datetime import datetime
 import sys
 import os
 import logging
+from functools import _lru_cache_wrapper
+import gc
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -560,7 +562,15 @@ def exibir_gestao_produtos():
                     del st.session_state.produto_para_excluir  # Remove o estado de confirmação
                     st.rerun()  # Recarrega a página para colapsar todos os expanders
 
-  
+
+
+def limpar_cache():
+    
+    for obj in gc.get_objects():
+        if isinstance(obj, _lru_cache_wrapper):
+            obj.cache_clear()
+
+
 
 def exibir_gestao_estoque():
     st.header("📦 Gestão de Estoque")
@@ -611,7 +621,7 @@ def exibir_gestao_estoque():
         st.subheader("📝 Registrar Movimentação de Estoque")
         if 'etapa' not in st.session_state or st.session_state.get('menu_opcao_anterior') != menu_opcao:
             st.session_state.etapa = 1
-            st.session_state.produtos_selecionados = []
+            st.session_state.produtos_selecionados = []            
             st.session_state.deposito_nome = list(deposito_map.keys())[0]
             st.session_state.tipo = [e.value for e in TipoEstoque][0]
             st.session_state.menu_opcao_anterior = menu_opcao
@@ -640,14 +650,21 @@ def exibir_gestao_estoque():
             st.write(f"**Tipo:** {st.session_state.tipo}")
             st.write("### Produtos Selecionados")
 
+            # Obtenha o estoque uma vez para o depósito de origem
+            deposito_id = deposito_map[st.session_state.deposito_nome]
+            estoque = consultar_estoque_batch(deposito_id)
+
+
+
             with st.form("form_quantidades", clear_on_submit=False):
                 quantidades = {}
                 observacoes = {}
                 for produto_nome in st.session_state.produtos_selecionados:
                     sku = produto_map[produto_nome]
                     deposito_id = deposito_map[st.session_state.deposito_nome]
-                    saldo_atual = consultar_saldo(sku, deposito_id)  # Função a ser implementada
-                    #st.write(f"**{produto_nome} - Saldo atual: {saldo_atual}**")
+                    #saldo_atual = consultar_saldo(sku, deposito_id)  # Função a ser implementada
+                    
+                    saldo_atual = estoque.get(produto_nome, 0)  # Obtém o saldo da origem do dicionário estoque
                     st.markdown(f"{produto_nome} - Saldo atual (Origem): <span style='color:green; font-weight:bold;'>{saldo_atual}</span>", unsafe_allow_html=True)
                     col1, col2 = st.columns([1, 3])
                     with col1:
@@ -679,6 +696,7 @@ def exibir_gestao_estoque():
                                     sucesso = False
                         if sucesso:
                             st.session_state.mensagem_sucesso = "Movimentações registradas com sucesso!"
+                            limpar_cache()
                             st.session_state.etapa = 1
                             st.rerun()
                 with col2:
@@ -738,7 +756,7 @@ def exibir_gestao_estoque():
                     if estoque.get(produto_nome, 0) > 0
                 ]
 
-            print(f"Origem_id: {origem_id}")    
+            
             
             produtos_disponiveis = get_produtos_disponiveis(origem_id, produto_map)
 
@@ -833,6 +851,7 @@ def exibir_gestao_estoque():
                                     sucesso = False
                         if sucesso:
                             st.session_state.mensagem_sucesso = "Transferências realizadas com sucesso!"
+                            limpar_cache()
                             st.session_state.etapa = 1
                             st.rerun()
                 with col2:
@@ -938,6 +957,7 @@ def exibir_gestao_estoque():
                             try:
                                 excluir_movimentacao(row['id'])                                
                                 st.success("Lançamento excluído com sucesso!")
+                                limpar_cache()
                                 st.session_state.confirmar_exclusao = None
                                 st.session_state.historico = None  # Força o recarregamento do histórico
                                 st.rerun()
