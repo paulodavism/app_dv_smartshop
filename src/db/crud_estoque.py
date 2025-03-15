@@ -1,6 +1,7 @@
 from sqlmodel import Session, select
 from typing import Tuple, Dict, Optional, List, Any
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from .models import Estoque, Deposito, Produto, TipoEstoque
 from src.db.database import get_session
 from sqlalchemy import func, and_
@@ -184,8 +185,8 @@ def registrar_movimentacao(
                 sku=sku,
                 deposito_id=deposito_id,
                 quantidade=quantidade,
-                tipo=tipo,
-                data_hora=datetime.now(),
+                tipo=tipo,                
+                data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")),
                 observacoes=observacoes
             )
 
@@ -249,7 +250,7 @@ def transferir_estoque(
                 deposito_id=origem_id,
                 quantidade=quantidade,  # Quantidade positiva para saída
                 tipo=TipoEstoque.SAIDA,
-                data_hora=datetime.now(),
+                data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")),
                 observacoes=observacoes
             )
             session.add(registro_saida)
@@ -260,7 +261,7 @@ def transferir_estoque(
                 deposito_id=destino_id,
                 quantidade=quantidade,  # Quantidade positiva para entrada
                 tipo=TipoEstoque.ENTRADA,
-                data_hora=datetime.now(),
+                data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")),
                 observacoes=observacoes
             )
             session.add(registro_entrada)
