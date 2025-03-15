@@ -780,6 +780,11 @@ def exibir_gestao_estoque():
             st.write(f"**Destino:** {st.session_state.destino_nome}")
             st.write("### Produtos Selecionados")
             
+            # Obtenha o estoque uma vez para o depósito de origem
+            origem_id = deposito_map[st.session_state.origem_nome]
+            estoque = consultar_estoque_batch(origem_id)
+
+
 
             with st.form("form_quantidades_transferencia", clear_on_submit=False):
                 quantidades = {}
@@ -787,8 +792,8 @@ def exibir_gestao_estoque():
                 for produto_nome in st.session_state.produtos_selecionados:
                     sku = produto_map[produto_nome]
                     origem_id = deposito_map[st.session_state.origem_nome]
-                    saldo_atual = consultar_saldo(sku, origem_id)  # Obtém o saldo da origem
-                    #st.write(f"**{produto_nome} - Saldo atual (Origem): {saldo_atual}**")
+                    #saldo_atual = consultar_saldo(sku, origem_id)  # Obtém o saldo da origem
+                    saldo_atual = estoque.get(produto_nome, 0)  # Obtém o saldo da origem do dicionário estoque
                     st.markdown(f"{produto_nome} - Saldo atual (Origem): <span style='color:green; font-weight:bold;'>{saldo_atual}</span>", unsafe_allow_html=True)
                     col1, col2 = st.columns([1, 3])
                     with col1:
