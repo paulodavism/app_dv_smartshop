@@ -42,6 +42,13 @@ CREATE TABLE IF NOT EXISTS estoque (
 );
 """
 
+# definir timezone do Brasil
+SQL_ALTER = """
+ALTER TABLE estoque
+ALTER COLUMN data_hora TYPE TIMESTAMPTZ
+USING data_hora AT TIME ZONE 'America/Sao_Paulo';
+"""
+
 def create_schema():
     try:
         # Conexão ao banco de dados usando a URL do Neon
