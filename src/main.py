@@ -23,6 +23,7 @@ from src.db.crud_estoque import (
     consultar_estoque,
     consultar_historico_movimentacoes,
     consultar_saldo,
+    consultar_estoque_batch,
     atualizar_movimentacao,
     excluir_movimentacao
 )
@@ -727,23 +728,31 @@ def exibir_gestao_estoque():
 
             #saldos = carregar_saldos()
 
-            # Filtre os produtos que têm saldo maior que zero no depósito de origem
-            produtos_disponiveis = []
-            for produto_nome, sku in produto_map.items():
-                total, detalhado = consultar_estoque(sku, origem_id)
-                if total > 0 and detalhado:
-                    saldo = detalhado[0]["Quantidade"]  # Acessa o saldo do primeiro registro
-                    if saldo > 0:
-                        produtos_disponiveis.append(produto_nome)
+            # Filtre os produtos que têm saldo maior que zero no depósito de origem               
+            @st.cache_data
+            def get_produtos_disponiveis(origem_id, produto_map):
+                estoque = consultar_estoque_batch(origem_id)
+                return [
+                    produto_nome
+                    for produto_nome, sku in produto_map.items()
+                    if estoque.get(produto_nome, 0) > 0
+                ]
+
+            print(f"Origem_id: {origem_id}")    
+            
+            produtos_disponiveis = get_produtos_disponiveis(origem_id, produto_map)
 
             if not produtos_disponiveis:
                 st.warning("Não há produtos com saldo disponível neste depósito.")
             else:
-                produtos_selecionados = st.multiselect("Produtos*", options=produtos_disponiveis,
-                                                        default=[],
-                                                        key="produtos_multiselect",
-                                                        placeholder="Selecione os produtos para transferência"
-                                                      )
+                produtos_selecionados = st.multiselect(
+                    "Produtos*",
+                    options=produtos_disponiveis,
+                    default=[],
+                    key="produtos_multiselect",
+                    placeholder="Selecione os produtos para transferência"
+                )
+
 
             destino_nome = st.selectbox("Destino*", options=list(deposito_map.keys()),
                                         index=list(deposito_map.keys()).index(destino_nome_default),

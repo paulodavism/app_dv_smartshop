@@ -5,7 +5,7 @@ from .models import Estoque, Deposito, Produto, TipoEstoque
 from src.db.database import get_session
 from sqlalchemy import func, and_
 from functools import lru_cache
-from sqlalchemy.orm import aliased
+from sqlalchemy.orm import aliased,selectinload
 import logging
 
 # Configuração básica do logging
@@ -371,7 +371,51 @@ def consultar_estoque(sku=None, deposito_id=None, limit=1000):
         print(f"Erro ao consultar estoque: {str(e)}")
         return 0, []
 
+@lru_cache(maxsize=1)
+def consultar_estoque_batch(origem_id):
+    """
+    Consulta o estoque para todos os produtos de um depósito específico de uma só vez.
+    """
+    try:
+        with get_session() as db:
+            EstoqueAlias = aliased(Estoque)
+            
+            # Subquery para encontrar a data/hora mais recente de cada SKU
+            subquery = (
+                select(
+                    EstoqueAlias.sku,
+                    func.max(EstoqueAlias.data_hora).label("max_data_hora")
+                )
+                .where(EstoqueAlias.deposito_id == origem_id)
+                .group_by(EstoqueAlias.sku)
+                .subquery()
+            )
 
+            # Query principal
+            stmt = (
+                select(Estoque)
+                .options(selectinload(Estoque.produto))
+                .join(Produto, Estoque.sku == Produto.sku)
+                .join(
+                    subquery,
+                    (Estoque.sku == subquery.c.sku) &
+                    (Estoque.data_hora == subquery.c.max_data_hora)
+                )
+                .where(
+                    Estoque.deposito_id == origem_id,
+                    Estoque.saldo > 0
+                )
+            )
+            
+            resultados = db.scalars(stmt).all()
+            
+            return {
+                resultado.produto.nome: resultado.saldo
+                for resultado in resultados
+            }
+    except Exception as e:
+        print(f"Erro ao consultar estoque: {str(e)}")
+        return {}
 
 
 def consultar_estoque_old(sku=None, deposito_id=None):
