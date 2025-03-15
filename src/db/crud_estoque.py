@@ -186,7 +186,8 @@ def registrar_movimentacao(
                 deposito_id=deposito_id,
                 quantidade=quantidade,
                 tipo=tipo,                
-                data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")),
+                #data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")),
+                data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")).replace(tzinfo=None),
                 observacoes=observacoes
             )
 
