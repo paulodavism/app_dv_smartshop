@@ -570,6 +570,11 @@ def limpar_cache():
         if isinstance(obj, _lru_cache_wrapper):
             obj.cache_clear()
 
+def reset_estado_estoque():
+    """Reseta as variáveis de estado da tela de Gestão de Estoque."""
+    for key in ['etapa', 'produtos_selecionados', 'deposito_nome', 'tipo', 'origem_nome', 'destino_nome']:
+        if key in st.session_state:
+            del st.session_state[key]
 
 
 def exibir_gestao_estoque():
@@ -602,6 +607,15 @@ def exibir_gestao_estoque():
         ["Registrar Movimentação", "Transferir Estoque", "Consultar Estoque", "Histórico de Movimentações"],
     )
 
+    # Verifica se o menu foi alterado e reseta o estado 
+    if st.session_state.get('menu_opcao_anterior') != menu_opcao:
+        reset_estado_estoque()
+        # Reseta o histórico, forçando a tela do histórico a ficar limpa
+        if 'historico' in st.session_state:
+            del st.session_state['historico']
+        st.session_state.menu_opcao_anterior = menu_opcao
+
+
     depositos = carregar_depositos()
     produtos = carregar_produtos()
 
@@ -619,12 +633,12 @@ def exibir_gestao_estoque():
 
     if menu_opcao == "Registrar Movimentação":
         st.subheader("📝 Registrar Movimentação de Estoque")
-        if 'etapa' not in st.session_state or st.session_state.get('menu_opcao_anterior') != menu_opcao:
+        if 'etapa' not in st.session_state: #or st.session_state.get('menu_opcao_anterior') != menu_opcao:
             st.session_state.etapa = 1
             st.session_state.produtos_selecionados = []            
             st.session_state.deposito_nome = list(deposito_map.keys())[0]
             st.session_state.tipo = [e.value for e in TipoEstoque][0]
-            st.session_state.menu_opcao_anterior = menu_opcao
+            #st.session_state.menu_opcao_anterior = menu_opcao
 
         if st.session_state.etapa == 1:
             deposito_nome_default = st.session_state.deposito_nome
@@ -714,12 +728,12 @@ def exibir_gestao_estoque():
     elif menu_opcao == "Transferir Estoque":
         st.subheader("🔄 Transferir Estoque entre Depósitos")
 
-        if 'etapa' not in st.session_state or st.session_state.get('menu_opcao_anterior') != menu_opcao:
+        if 'etapa' not in st.session_state: #or st.session_state.get('menu_opcao_anterior') != menu_opcao:
             st.session_state.etapa = 1
             st.session_state.produtos_selecionados = []
             st.session_state.origem_nome = list(deposito_map.keys())[0]
             st.session_state.destino_nome = list(deposito_map.keys())[0]  # Inicializa com o primeiro depósito
-            st.session_state.menu_opcao_anterior = menu_opcao
+            #st.session_state.menu_opcao_anterior = menu_opcao
 
         if st.session_state.etapa == 1:
             origem_nome_default = st.session_state.origem_nome
@@ -733,18 +747,7 @@ def exibir_gestao_estoque():
 
             # Obtenha o ID do depósito de origem selecionado
             origem_id = deposito_map[origem_nome]
-
-            # *** OTIMIZAÇÃO: Carrega os saldos de todos os produtos em todos os depósitos de uma vez ***
-            #@st.cache_data(ttl=600)  # Cache por 10 minutos
-            #def carregar_saldos():
-            #    saldos = {}
-            #    for produto_nome, sku in produto_map.items():
-            #        for deposito_nome, deposito_id in deposito_map.items():
-            #            saldo = consultar_saldo(sku, deposito_id)
-            #            saldos[(sku, deposito_id)] = saldo
-            #    return saldos
-
-            #saldos = carregar_saldos()
+            
 
             # Filtre os produtos que têm saldo maior que zero no depósito de origem               
             @st.cache_data

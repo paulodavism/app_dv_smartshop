@@ -185,8 +185,7 @@ def registrar_movimentacao(
                 sku=sku,
                 deposito_id=deposito_id,
                 quantidade=quantidade,
-                tipo=tipo,                
-                #data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")),
+                tipo=tipo,                                
                 data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")).replace(tzinfo=None),
                 observacoes=observacoes
             )
@@ -250,8 +249,8 @@ def transferir_estoque(
                 sku=sku,
                 deposito_id=origem_id,
                 quantidade=quantidade,  # Quantidade positiva para saída
-                tipo=TipoEstoque.SAIDA,
-                data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")),
+                tipo=TipoEstoque.SAIDA,                
+                data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")).replace(tzinfo=None),
                 observacoes=observacoes
             )
             session.add(registro_saida)
@@ -261,8 +260,8 @@ def transferir_estoque(
                 sku=sku,
                 deposito_id=destino_id,
                 quantidade=quantidade,  # Quantidade positiva para entrada
-                tipo=TipoEstoque.ENTRADA,
-                data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")),
+                tipo=TipoEstoque.ENTRADA,                
+                data_hora=datetime.now(ZoneInfo("America/Sao_Paulo")).replace(tzinfo=None),
                 observacoes=observacoes
             )
             session.add(registro_entrada)

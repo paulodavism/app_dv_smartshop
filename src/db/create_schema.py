@@ -40,14 +40,21 @@ CREATE TABLE IF NOT EXISTS estoque (
     observacoes VARCHAR(200),
     saldo INTEGER NOT NULL DEFAULT 0
 );
+
+-- Criação da função current_time_sao_paulo
+CREATE OR REPLACE FUNCTION current_time_sao_paulo()
+RETURNS TIMESTAMP WITH TIME ZONE AS $$
+BEGIN
+  RETURN CURRENT_TIMESTAMP AT TIME ZONE 'America/Sao_Paulo';
+END;
+$$ LANGUAGE plpgsql;
+
+-- Alteração da coluna data_hora para usar a nova função como valor padrão
+ALTER TABLE estoque
+ALTER COLUMN data_hora SET DEFAULT current_time_sao_paulo();
+
 """
 
-# definir timezone do Brasil
-SQL_ALTER = """
-ALTER TABLE estoque
-ALTER COLUMN data_hora TYPE TIMESTAMPTZ
-USING data_hora AT TIME ZONE 'America/Sao_Paulo';
-"""
 
 def create_schema():
     try:
