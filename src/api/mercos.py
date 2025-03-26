@@ -49,6 +49,14 @@ class MercosWebScraping():
             # Preencher credenciais
             email = os.getenv("MERCOS_EMAIL")
             senha = os.getenv("MERCOS_SENHA")
+
+            if not email or not senha:
+                logging.error("Credenciais ausentes ou inválidas. Verifique as Secrets no Streamlit Cloud.")
+                return pd.DataFrame()
+
+            logging.info("Credenciais carregadas com sucesso.")
+            logging.info(f"Email: {email}")
+            logging.info(f"Senha: {'*' * len(senha)}")  # Exibir asteriscos para segurança
             
             input_email = driver.find_element(By.ID, "id_usuario")
             input_email.send_keys(email)
