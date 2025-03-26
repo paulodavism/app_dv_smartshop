@@ -1,15 +1,18 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options  # Importar Options para configurar o navegador
+import os
+from seleniumbase import Driver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options as ChromeOptions  # Renomeado para evitar conflito
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from dotenv import load_dotenv
-import os
 import pandas as pd
 import re
 import time
+import logging
 
+# Configurar o logger
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class MercosWebScraping():
 
@@ -24,13 +27,20 @@ class MercosWebScraping():
         load_dotenv()
 
         # Configurar opções do Chrome para modo headless
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")  # Executar em modo invisível
-        chrome_options.add_argument("--disable-gpu")  # Desabilitar GPU (recomendado para headless)
-        chrome_options.add_argument("--window-size=1920,1080")  # Definir tamanho da janela (opcional)
+        chrome_options = ChromeOptions()  # Usando ChromeOptions
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--remote-debugging-port=9222")
 
-        # Inicializar o WebDriver com as opções configuradas
-        driver = webdriver.Chrome(options=chrome_options)
+        # Inicializar o WebDriver usando o SeleniumBase
+        try:
+            driver = Driver(browser="chrome", headless=True)
+            logging.info("WebDriver inicializado com sucesso.")
+        except Exception as e:
+            logging.error(f"Erro ao inicializar o WebDriver: {e}")
+            return pd.DataFrame()
 
         try:
             # === LOGIN ===
@@ -40,9 +50,7 @@ class MercosWebScraping():
             email = os.getenv("MERCOS_EMAIL")
             senha = os.getenv("MERCOS_SENHA")
             
-            input_email = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.ID, "id_usuario"))
-            )
+            input_email = driver.find_element(By.ID, "id_usuario")
             input_email.send_keys(email)
             
             input_senha = driver.find_element(By.ID, "id_senha")
@@ -55,11 +63,11 @@ class MercosWebScraping():
                 WebDriverWait(driver, 20).until(
                     EC.url_contains("/327426/indicadores/")  # <<<< Use sua URL real
                 )
-                print("✅ Login realizado com sucesso!")
+                logging.info("Login realizado com sucesso!")
             except TimeoutException:
-                print("❌ Falha no login")
+                logging.error("Falha no login")
                 driver.quit()
-                exit()
+                return pd.DataFrame()
 
             # === ACESSO À PÁGINA DE PRODUTOS ===
             PRODUTOS_URL = "https://app.mercos.com/industria/327426/produtos/"  # <<<< Use seu ID
@@ -69,9 +77,9 @@ class MercosWebScraping():
                 WebDriverWait(driver, 15).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, "#listagem_produto"))
                 )
-                print("✅ Acesso direto aos produtos realizado!")
+                logging.info("Acesso direto aos produtos realizado!")
             except TimeoutException:
-                print("⚠️ Acesso direto falhou. Tentando navegação via menu...")
+                logging.warning("Acesso direto falhou. Tentando navegação via menu...")
                 
                 # Navegar via menu
                 menu_produtos = WebDriverWait(driver, 15).until(
@@ -82,7 +90,7 @@ class MercosWebScraping():
                 WebDriverWait(driver, 15).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, "#listagem_produto"))
                 )
-                print("✅ Navegação via menu concluída!")
+                logging.info("Navegação via menu concluída!")
 
             # === APLICAR FILTRO "TODOS OS PRODUTOS" ===
             try:
@@ -99,14 +107,14 @@ class MercosWebScraping():
                 todos_produtos.click()
                 time.sleep(3)  # Aguardar atualização da tabela
             except Exception as e:
-                print("⚠️ Erro ao aplicar filtro:", str(e))
+                logging.warning(f"Erro ao aplicar filtro: {e}")
 
             # === EXTRAÇÃO DE TODAS AS PÁGINAS ===
             produtos = []
             pagina = 1
 
             while True:
-                print(f"🔄 Extraindo página {pagina}...")
+                logging.info(f"Extraindo página {pagina}...")
                 
                 # Extrair dados da página atual
                 tabela = driver.find_element(By.ID, "listagem_produto")
@@ -135,7 +143,7 @@ class MercosWebScraping():
                     time.sleep(3)  # Ajuste conforme necessidade
                     pagina += 1
                 except:
-                    print("⏹ Todas as páginas extraídas!")
+                    logging.info("Todas as páginas extraídas!")
                     break
 
             # === TRATAR OS DADOS COM PANDAS ===
@@ -146,11 +154,11 @@ class MercosWebScraping():
 
             # Salvar CSV com os dados filtrados
             df_filtrado.to_csv("produtos_mercos.csv", index=False)    
-            print(f"✅ Dados salvos! Total: {len(produtos)} produtos")
-
+            logging.info(f"Dados salvos! Total: {len(produtos)} produtos")
+            self.df_filtrado = df_filtrado
             
         except Exception as e:
-            print(f"❌ ERRO: {str(e)}")
+            logging.error(f"ERRO: {e}")
             self.df_filtrado = pd.DataFrame()
             
         finally:
@@ -159,7 +167,7 @@ class MercosWebScraping():
             
             # Calcular o tempo total
             tempo_total = end_time - start_time
-            print(f"⏰ Tempo total do processo: {tempo_total:.2f} segundos")            
+            logging.info(f"Tempo total do processo: {tempo_total:.2f} segundos")            
             driver.quit()
 
         return self.df_filtrado
@@ -179,4 +187,4 @@ if __name__ == "__main__":
 
                     
     except Exception as e:
-        print(f"Erro na execução da classe MercosWebScraping: {str(e)}")    
+        print(f"Erro na execução da classe MercosWebScraping: {str(e)}")
