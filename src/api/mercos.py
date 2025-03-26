@@ -1,15 +1,15 @@
-import os
-from seleniumbase import Driver
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options as ChromeOptions  # Renomeado para evitar conflito
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+import os
 from dotenv import load_dotenv
 import pandas as pd
-import re
 import time
 import logging
+
 
 # Configurar o logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -26,17 +26,17 @@ class MercosWebScraping():
         # Carregar variáveis do arquivo .env
         load_dotenv()
 
-        # Configurar opções do Chrome para modo headless
-        chrome_options = ChromeOptions()  # Usando ChromeOptions
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--remote-debugging-port=9222")
-
-        # Inicializar o WebDriver usando o SeleniumBase
         try:
-            driver = Driver(browser="chrome", headless=True)
+            # Configurar opções do Chrome para modo headless
+            chrome_options = Options()
+            chrome_options.add_argument("--headless")  # Executar em modo invisível
+            chrome_options.add_argument("--disable-gpu")
+            chrome_options.add_argument("--no-sandbox")
+            chrome_options.add_argument("--disable-dev-shm-usage")
+            chrome_options.add_argument("--remote-debugging-port=9222")
+
+            # Inicializar o WebDriver (sem especificar o caminho do chromedriver)
+            driver = webdriver.Chrome(options=chrome_options)
             logging.info("WebDriver inicializado com sucesso.")
         except Exception as e:
             logging.error(f"Erro ao inicializar o WebDriver: {e}")

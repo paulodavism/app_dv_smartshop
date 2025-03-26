@@ -391,23 +391,26 @@ def exibir_gestao_estoque():
             use_container_width=True,
             height=600
         )
-        
+
+    # filepath: c:\Tempd\app_dv_smartshop\src\main.py
+    def salvar_data_processamento():
+        timezone = pytz.timezone('America/Sao_Paulo')
+        timestamp = datetime.now(tz=timezone).strftime('%d/%m/%Y %H:%M')
+        with open("process_timestamp.txt", "w", encoding="utf-8") as f:
+            f.write(timestamp)
+
+    # filepath: c:\Tempd\app_dv_smartshop\src\main.py
+    def ler_data_processamento():
+        try:
+            with open("process_timestamp.txt", "r", encoding="utf-8") as f:
+                return f.read().strip()
+        except FileNotFoundError:
+            return "Processamento ainda não realizado."            
+
             
     if menu_opcao == "Consultar Estoque Próprio":
-        st.subheader("🔍 Consultar Estoque Próprio (Mercos)")                
-        
-        try:
-            filepath = "produtos_mercos.csv"
-            timezone = pytz.timezone('America/Sao_Paulo')
-            last_modified_timestamp = os.path.getmtime(filepath)
-            last_modified_datetime = datetime.fromtimestamp(last_modified_timestamp, tz=timezone)
-            st.info(f"Última atualização: {last_modified_datetime.strftime('%d/%m/%Y %H:%M')}")
-        except FileNotFoundError:
-            st.info("Arquivo 'produtos_mercos.csv' não encontrado.")
-        except Exception as e:
-            st.error(f"Erro ao obter a data da última atualização: {e}")
-
-
+        st.subheader("🔍 Consultar Estoque Próprio (Mercos)")                        
+        st.info(f"Última atualização de processamento: {ler_data_processamento()}")
         st.markdown("---")
 
         # Inicializa o estado da sessão
@@ -441,8 +444,8 @@ def exibir_gestao_estoque():
                         atualizar_dados_mercos()                         
                         #time.sleep(5)                        
                         st.toast("Dados atualizados com sucesso!", icon="✅")     
-                        # Atualiza a data/hora da última atualização
-                        st.session_state.ultima_atualizacao = datetime.now(pytz.utc)                                           
+                        salvar_data_processamento()  # Atualiza o timestamp do processamento                        
+                        #st.session_state.ultima_atualizacao = datetime.now(pytz.utc)                                                                   
 
                     except Exception as e:
                         st.error(f"Erro ao atualizar os dados do Mercos: {str(e)}")                    
