@@ -13,7 +13,6 @@ venv/
 # Logs e dados
 *.log
 *.sqlite
-*.csv
 *.parquet
 
 # Python
