@@ -39,6 +39,7 @@ class MercosWebScraping():
             chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
             chrome_options.add_experimental_option("useAutomationExtension", False)
             chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+            
 
             # Inicializar o WebDriver (sem especificar o caminho do chromedriver)
             driver = webdriver.Chrome(options=chrome_options)
@@ -62,6 +63,9 @@ class MercosWebScraping():
             logging.info("Credenciais carregadas com sucesso.")
             logging.info(f"Email: {email}")
             logging.info(f"Senha: {'*' * len(senha)}")  # Exibir asteriscos para segurança
+
+            logging.info(f"Email carregado: {'*' * len(email)}")
+            logging.info(f"Senha carregada: {'*' * len(senha)}")
             
             try:
                 # Aguardar o campo de email
@@ -97,6 +101,9 @@ class MercosWebScraping():
                 logging.info("Movimento humano simulado e botão de login clicado.")
 
                 logging.info("Botão de login clicado.")
+
+                driver.save_screenshot("after_login.png")
+                logging.info("Screenshot salvo após tentativa de login")
 
                 # Aguardar alguns segundos para garantir o processamento
                 time.sleep(5)
