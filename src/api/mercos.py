@@ -58,16 +58,34 @@ class MercosWebScraping():
             logging.info(f"Email: {email}")
             logging.info(f"Senha: {'*' * len(senha)}")  # Exibir asteriscos para segurança
             
-            input_email = driver.find_element(By.ID, "id_usuario")
-            input_email.send_keys(email)
-            
-            input_senha = driver.find_element(By.ID, "id_senha")
-            input_senha.send_keys(senha)    
-            
-            driver.find_element(By.ID, "botaoEfetuarLogin").click()
+            try:
+                # Aguardar o campo de email
+                input_email = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.ID, "id_usuario"))
+                )
+                logging.info("Campo de email encontrado.")
 
-            # Aguardar alguns segundos para garantir o redirecionamento
-            time.sleep(3)
+                # Aguardar o campo de senha
+                input_senha = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.ID, "id_senha"))
+                )
+                logging.info("Campo de senha encontrado.")
+
+                # Aguardar o botão de login
+                btn_login = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.ID, "botaoEfetuarLogin"))
+                )
+                logging.info("Botão de login encontrado.")
+
+                # Preencher credenciais e clicar no botão de login
+                input_email.send_keys(email)
+                input_senha.send_keys(senha)
+                btn_login.click()
+                logging.info("Credenciais enviadas e botão de login clicado.")
+            except TimeoutException as e:
+                logging.error(f"Elemento não encontrado: {e}")
+                driver.quit()
+                return pd.DataFrame()
 
             # Log da URL atual
             logging.info(f"URL após o login: {driver.current_url}")
