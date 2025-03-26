@@ -7,6 +7,8 @@ import os
 import logging
 from functools import _lru_cache_wrapper
 import gc
+import time
+import pytz
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -15,22 +17,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from src.api.mercadolivre import MercadoLivreAPI
 from src.api.amazon import AmazonAPI
-from src.db.database import get_session
-from src.db.crud_depositos import criar_deposito, listar_depositos, atualizar_deposito, deletar_deposito
-from src.db.crud_produtos import criar_produto, listar_produtos, atualizar_produto, deletar_produto
+from src.api.mercos import MercosWebScraping
 
-from src.db.crud_estoque import (
-    registrar_movimentacao,
-    transferir_estoque,
-    consultar_estoque,
-    consultar_historico_movimentacoes,
-    consultar_saldo,
-    consultar_estoque_batch,
-    atualizar_movimentacao,
-    excluir_movimentacao
-)
-
-from src.db.models import Estoque, Deposito, Produto,TipoEstoque
 from plotly.express.colors import qualitative
 from sqlmodel import Session, select
 from sqlalchemy import func, and_
@@ -51,7 +39,7 @@ st.set_page_config(
 # Constantes
 DATE_FORMAT = "%Y-%m-%d %H:%M"
 COLOR_SCHEME = {
-    'Mercado Livre (Full)': '#00B8A9',
+    'Mercado Livre (Full)': '#FFFF00',#'#00B8A9',
     'Amazon (FBA)': '#FF6B6B',    
     'background': '#F8F9FA'
 }
@@ -105,57 +93,36 @@ def formatar_numero(valor):
 
 def carregar_estoque_interno():
     """
-    Carrega os dados de estoque interno do banco de dados, incluindo informações dos depósitos próprios,
-    considerando o saldo mais recente de cada SKU em cada depósito.
+    Carrega os dados de estoque interno do arquivo conciliado do mercos
     
     Returns:
         pd.DataFrame: Um DataFrame contendo os dados de estoque interno, com colunas padronizadas.
     """
-    try:
-        with get_session() as db:
-            # Subquery para encontrar a data/hora mais recente de cada SKU e depósito
-            subquery = (
-                select(Estoque.sku, Estoque.deposito_id, func.max(Estoque.data_hora).label("max_data_hora"))
-                .group_by(Estoque.sku, Estoque.deposito_id)
-                .subquery()
-            )
+    try:                            
+        df_mercos = pd.read_csv("produtos_mercos.csv")
+        df_mercos_conciliado = pd.read_csv("produtos_mercos_conciliados.csv")         
+                                        
+        # 1. Filtrar linhas onde 'sku_ml_amazon' está preenchida
+        df_filtrado = df_mercos_conciliado[df_mercos_conciliado['sku_ml_amazon'].notna() & (df_mercos_conciliado['sku_ml_amazon'] != '')].copy()
 
-            # Query principal para selecionar os registros mais recentes
-            statement = (
-                select(
-                    Estoque,
-                    Deposito.nome.label("Depósito"),
-                    Produto.nome.label("Produto")
-                )
-                .join(Deposito, Estoque.deposito_id == Deposito.id)
-                .join(Produto, Estoque.sku == Produto.sku)
-                .join(subquery, and_(
-                    Estoque.sku == subquery.c.sku,
-                    Estoque.deposito_id == subquery.c.deposito_id,
-                    Estoque.data_hora == subquery.c.max_data_hora
-                ))
-                .where(Deposito.tipo == "Próprio")  # Filtra apenas depósitos próprios
-            )
-            
-            # Executa a consulta
-            resultados = db.exec(statement).all()
-            
-            # Transforma os resultados em uma lista de dicionários
-            estoque_lista = [
-                {
-                    "SKU": registro.Estoque.sku,
-                    "Produto": registro.Produto,
-                    "Depósito": registro.Depósito,
-                    "Estoque": int(registro.Estoque.saldo)  # Garante formato inteiro e usa o saldo
-                }
-                for registro in resultados
-            ]
-            
-            # Converte a lista para um DataFrame Pandas
-            df_estoque = pd.DataFrame(estoque_lista)
-            df_estoque = df_estoque[df_estoque["Estoque"] > 0]
-            
-            return df_estoque
+        # 2. Padronizar nomes das colunas
+        df_filtrado.rename(columns={'sku_ml_amazon': 'SKU',
+                                    'produto': 'Produto',
+                                    'deposito_mercos': 'Depósito',
+                                    'estoque_mercos': 'Estoque'}, inplace=True)
+                
+        # 3. Verificar se houve atualização de estoque
+        for index_mercos, reg_mercos in df_mercos.iterrows():
+            for index_conciliado, reg_conciliado in df_filtrado.iterrows():
+                if reg_mercos['SKU'] == reg_conciliado['sku_mercos']:
+                    if reg_mercos['Estoque'] != reg_conciliado['Estoque']:
+                        df_filtrado.loc[index_conciliado, 'Estoque'] = reg_mercos['Estoque']
+                        print(f"Estoque do produto {reg_conciliado['Produto']} atualizado de {reg_conciliado['Estoque']} para {reg_mercos['Estoque']}.", flush=True)                        
+                         
+        # 4. Selecionar apenas as colunas desejadas
+        df_estoque = df_filtrado[['SKU', 'Produto', 'Depósito', 'Estoque']]
+                            
+        return df_estoque
     
     except Exception as e:
         print(f"Erro ao carregar estoque interno: {str(e)}")
@@ -186,6 +153,10 @@ def carregar_dados_completos(_apis):
                 ml_data.rename(columns={"Nome": "Produto"}, inplace=True)  # Padroniza nome da coluna
                 ml_data['Depósito'] = 'Mercado Livre (Full)'
                 dados_externos.append(ml_data)
+                
+                #Dados do ML como referência para conciliação com Mercos                
+                ml_data.to_csv("skus_mercado_livre_amazon.csv", index=False)
+
         except Exception as e:
             st.error(f"Erro ML: {str(e)}")
     
@@ -239,7 +210,7 @@ def exibir_visao_integrada(apis):
     with st.sidebar:
 
         st.markdown("---")
-        if st.button("🔄 Atualizar Dados", help="Recarregar todos os dados", use_container_width=True):
+        if st.button("🔄 Atualizar Dados", help="Atualizar dados de todos os depósitos", use_container_width=True):
             carregar_dados_completos.clear() 
             st.session_state.atualizar_dados = True
             st.rerun()
@@ -351,218 +322,8 @@ def exibir_visao_integrada(apis):
                 ),
             },
             use_container_width=True,
-            height=600
+            height=1200
         )
-
-def exibir_gestao_depositos():
-    st.header("🏭 Gestão de Depósitos")
-
-    # Função auxiliar para carregar depósitos
-    def carregar_depositos():
-        try:
-            return listar_depositos()
-        except Exception as e:
-            st.error(f"Erro ao carregar depósitos: {str(e)}")
-            return []
-
-    # Carregar depósitos existentes
-    depositos = carregar_depositos()
-
-    # Exibir mensagens de sucesso, se houver
-    if getattr(st.session_state, "mensagem_sucesso", None):
-        # Exibe a mensagem como um toast
-        st.toast(st.session_state.mensagem_sucesso, icon="✅")
-        del st.session_state.mensagem_sucesso  # Limpa a mensagem após exibi-la
-
-    # Formulário para criar novo depósito
-    with st.expander("➕ Novo Depósito", expanded=True):
-        with st.form("form_deposito", clear_on_submit=True):
-            nome = st.text_input("Nome do Depósito*", max_chars=100)
-            tipo = st.selectbox("Tipo*", ["Próprio", "Temporário"])
-            observacoes = st.text_area("Observações", max_chars=200)
-
-            if st.form_submit_button("💾 Salvar"):
-                if not nome:
-                    st.error("Nome é obrigatório")
-                else:
-                    try:
-                        criar_deposito(nome, tipo, observacoes)
-                        st.session_state.mensagem_sucesso = "Depósito criado com sucesso!"  # Armazena mensagem
-                        st.rerun()
-                    except ValueError as e:
-                        st.error(str(e))
-                    except Exception as e:
-                        st.error(f"Erro ao criar depósito: {str(e)}")
-
-    # Exibição dos depósitos cadastrados
-    st.markdown("---")
-    st.subheader("Depósitos Cadastrados")
-
-    if not depositos:
-        st.info("Nenhum depósito cadastrado")
-    else:
-        for idx, deposito in enumerate(depositos):
-            #st.markdown(f"**Depósito ID: {deposito.id}**")
-            with st.expander(deposito.nome, expanded=False):  # Sempre colapsado inicialmente
-                novo_nome = st.text_input("Nome", value=deposito.nome, key=f"nome_{deposito.id}")
-                novo_tipo = st.selectbox(
-                    "Tipo",
-                    ["Próprio", "Temporário"],
-                    index=0 if deposito.tipo == "Próprio" else 1,
-                    key=f"tipo_{deposito.id}"
-                )
-                novas_observacoes = st.text_area("Observações", value=deposito.observacoes or "", key=f"obs_{deposito.id}")
-
-                # Layout para botões "Salvar" e "Excluir"
-                cols = st.columns([1, 1, 20])  # Colunas para os botões
-
-                # Botão Salvar
-                if cols[0].button("💾 Salvar", key=f"salvar_{deposito.id}"):
-                    try:
-                        atualizar_deposito(
-                            deposito_id=deposito.id,
-                            novo_nome=novo_nome,
-                            novo_tipo=novo_tipo,
-                            novas_observacoes=novas_observacoes,
-                        )
-                        st.session_state.mensagem_sucesso = "Registro alterado com sucesso!"  # Armazena mensagem
-                        st.rerun()  # Recarrega a página para colapsar todos os expanders
-                    except ValueError as e:
-                        st.error(str(e))
-                    except Exception as e:
-                        st.error(f"Erro ao atualizar depósito: {str(e)}")
-
-                # Botão Excluir
-                if cols[1].button("❌ Excluir", key=f"excluir_{deposito.id}"):
-                    # Armazena o ID do depósito a ser excluído no session_state
-                    st.session_state.deposito_para_excluir = deposito.id
-
-            # Verifica se há um depósito marcado para exclusão
-            if getattr(st.session_state, "deposito_para_excluir", None) == deposito.id:
-                confirmacao = st.warning(f"Confirma a exclusão do depósito '{deposito.nome}'?")
-                col_confirmacao = st.columns([1, 1, 20])
-
-                # Botão "Sim, excluir"
-                if col_confirmacao[0].button("Sim, excluir", key=f"confirmar_exclusao_{deposito.id}"):
-                    try:
-                        deletar_deposito(deposito.id)  # Chama a função de exclusão
-                        st.session_state.mensagem_sucesso = f"Depósito '{deposito.nome}' excluído com sucesso!"  # Armazena mensagem
-                        del st.session_state.deposito_para_excluir  # Remove o estado de confirmação
-                        st.rerun()  # Recarrega a página para colapsar todos os expanders
-                    except ValueError as e:
-                        st.error(str(e))
-                    except Exception as e:
-                        st.error(f"Erro ao excluir depósito: {str(e)}")
-
-                # Botão "Cancelar"
-                if col_confirmacao[1].button("Cancelar", key=f"cancelar_exclusao_{deposito.id}"):
-                    # Não exibe mensagem de "Exclusão cancelada"
-                    del st.session_state.deposito_para_excluir  # Remove o estado de confirmação
-                    st.rerun()  # Recarrega a página para colapsar todos os expanders
-
-
-def exibir_gestao_produtos():
-    st.header("📦 Gestão de Produtos")
-
-    # Função auxiliar para carregar produtos
-    def carregar_produtos(filtro: str = None):
-        try:
-            return listar_produtos(filtro=filtro)
-        except Exception as e:
-            st.error(f"Erro ao carregar produtos: {str(e)}")
-            return []
-
-    # Exibir mensagens de sucesso, se houver
-    if getattr(st.session_state, "mensagem_sucesso", None):
-        # Exibe a mensagem como um toast
-        st.toast(st.session_state.mensagem_sucesso, icon="✅")
-        del st.session_state.mensagem_sucesso  # Limpa a mensagem após exibi-la
-
-    # Campo de filtro
-    filtro = st.text_input("🔍 Filtrar produtos por nome ou SKU:")
-    produtos = carregar_produtos(filtro=filtro)
-
-    # Formulário para criar novo produto
-    with st.expander("➕ Novo Produto", expanded=True):
-        with st.form("form_produto", clear_on_submit=True):
-            sku = st.text_input("SKU*", max_chars=50)
-            nome = st.text_input("Nome do Produto*", max_chars=100)
-            descricao = st.text_area("Descrição", max_chars=200)
-
-            if st.form_submit_button("Salvar"):
-                if not sku or not nome:
-                    st.error("SKU e Nome são obrigatórios")
-                else:
-                    try:
-                        criar_produto(sku, nome, descricao)
-                        st.session_state.mensagem_sucesso = "Produto criado com sucesso!"  # Armazena mensagem
-                        st.rerun()
-                    except ValueError as e:
-                        st.error(str(e))
-                    except Exception as e:
-                        st.error(f"Erro ao criar produto: {str(e)}")
-
-    # Exibição dos produtos cadastrados
-    st.markdown("---")
-    st.subheader("Produtos Cadastrados")
-
-    if not produtos:
-        st.info("Nenhum produto cadastrado")
-    else:
-        for idx, produto in enumerate(produtos):
-            #st.markdown(f"**Produto SKU: {produto.sku}**")
-            with st.expander(produto.nome, expanded=False):  # Sempre colapsado inicialmente
-                novo_sku = st.text_input("SKU", value=produto.sku, disabled=True, key=f"sku_{produto.sku}")
-                novo_nome = st.text_input("Nome", value=produto.nome, key=f"nome_{produto.sku}")
-                nova_descricao = st.text_area("Descrição", value=produto.descricao or "", key=f"desc_{produto.sku}")
-
-                # Layout para botões "Salvar" e "Excluir"
-                cols = st.columns([1, 1, 20])  # Colunas para os botões
-
-                # Botão Salvar
-                if cols[0].button("💾 Salvar", key=f"salvar_{produto.sku}"):
-                    try:
-                        atualizar_produto(
-                            sku=produto.sku,
-                            novo_nome=novo_nome,
-                            nova_descricao=nova_descricao,
-                        )
-                        st.session_state.mensagem_sucesso = "Produto alterado com sucesso!"  # Armazena mensagem
-                        st.rerun()  # Recarrega a página para colapsar todos os expanders
-                    except ValueError as e:
-                        st.error(str(e))
-                    except Exception as e:
-                        st.error(f"Erro ao atualizar produto: {str(e)}")
-
-                # Botão Excluir
-                if cols[1].button("❌ Excluir", key=f"excluir_{produto.sku}"):
-                    # Armazena o SKU do produto a ser excluído no session_state
-                    st.session_state.produto_para_excluir = produto.sku
-
-            # Verifica se há um produto marcado para exclusão
-            if getattr(st.session_state, "produto_para_excluir", None) == produto.sku:
-                confirmacao = st.warning(f"Confirma a exclusão do produto '{produto.nome}' (SKU: {produto.sku})?")
-                col_confirmacao = st.columns([1, 1, 20])
-
-                # Botão "Sim, excluir"
-                if col_confirmacao[0].button("Sim, excluir", key=f"confirmar_exclusao_{produto.sku}"):
-                    try:
-                        deletar_produto(produto.sku)  # Chama a função de exclusão
-                        st.session_state.mensagem_sucesso = f"Produto '{produto.nome}' excluído com sucesso!"  # Armazena mensagem
-                        del st.session_state.produto_para_excluir  # Remove o estado de confirmação
-                        st.rerun()  # Recarrega a página para colapsar todos os expanders
-                    except ValueError as e:
-                        st.error(str(e))
-                    except Exception as e:
-                        st.error(f"Erro ao excluir produto: {str(e)}")
-
-                # Botão "Cancelar"
-                if col_confirmacao[1].button("Cancelar", key=f"cancelar_exclusao_{produto.sku}"):
-                    # Não exibe mensagem de "Exclusão cancelada"
-                    del st.session_state.produto_para_excluir  # Remove o estado de confirmação
-                    st.rerun()  # Recarrega a página para colapsar todos os expanders
-
-
 
 def limpar_cache():
     
@@ -580,21 +341,7 @@ def reset_estado_estoque():
 def exibir_gestao_estoque():
     st.header("📦 Gestão de Estoque")
 
-    # Funções auxiliares para carregar dados
-    def carregar_depositos():
-        try:
-            return listar_depositos()
-        except Exception as e:
-            st.error(f"Erro ao carregar depósitos: {str(e)}")
-            return []
-
-    def carregar_produtos():
-        try:
-            return listar_produtos()
-        except Exception as e:
-            st.error(f"Erro ao carregar produtos: {str(e)}")
-            return []
-
+    
     # Exibir mensagens de sucesso, se houver
     if getattr(st.session_state, "mensagem_sucesso", None):
         # Exibe a mensagem como um toast
@@ -604,7 +351,7 @@ def exibir_gestao_estoque():
     # Menu lateral para navegar entre as funcionalidades
     menu_opcao = st.sidebar.selectbox(
         "Selecione uma operação",
-        ["Registrar Movimentação", "Transferir Estoque", "Consultar Estoque", "Histórico de Movimentações"],
+        ["Consultar Estoque Próprio" , "Conciliar SKUs"],
     )
 
     # Verifica se o menu foi alterado e reseta o estado 
@@ -614,404 +361,251 @@ def exibir_gestao_estoque():
         if 'historico' in st.session_state:
             del st.session_state['historico']
         st.session_state.menu_opcao_anterior = menu_opcao
+    
+    def atualizar_dados_mercos():
+        mercos_rasp = MercosWebScraping()        
 
-
-    depositos = carregar_depositos()
-    produtos = carregar_produtos()
-
-    if not depositos:
-        st.warning("Nenhum depósito cadastrado. Cadastre depósitos antes de gerenciar estoque.")
-        return
-
-    if not produtos:
-        st.warning("Nenhum produto cadastrado. Cadastre produtos antes de gerenciar estoque.")
-        return
-
-    # Mapeamento de depósitos e produtos para seleção
-    deposito_map = {d.nome: d.id for d in depositos}
-    produto_map = {p.nome: p.sku for p in produtos}
-
-    if menu_opcao == "Registrar Movimentação":
-        st.subheader("📝 Registrar Movimentação de Estoque")
-        if 'etapa' not in st.session_state: #or st.session_state.get('menu_opcao_anterior') != menu_opcao:
-            st.session_state.etapa = 1
-            st.session_state.produtos_selecionados = []            
-            st.session_state.deposito_nome = list(deposito_map.keys())[0]
-            st.session_state.tipo = [e.value for e in TipoEstoque][0]
-            #st.session_state.menu_opcao_anterior = menu_opcao
-
-        if st.session_state.etapa == 1:
-            deposito_nome_default = st.session_state.deposito_nome
-            tipo_default = st.session_state.tipo
-
-            with st.form("form_selecao", clear_on_submit=False):
-                produtos_selecionados = st.multiselect("Produtos*", options=list(produto_map.keys()), default=st.session_state.produtos_selecionados)
-                deposito_nome = st.selectbox("Depósito*", options=list(deposito_map.keys()), index=list(deposito_map.keys()).index(deposito_nome_default))
-                tipo = st.selectbox("Tipo*", [e.value for e in TipoEstoque], index=[e.value for e in TipoEstoque].index(tipo_default))
-                if st.form_submit_button("Próxima Etapa"):
-                    if not produtos_selecionados or not deposito_nome or not tipo:
-                        st.error("Todos os campos são obrigatórios.")
-                    else:
-                        st.session_state.produtos_selecionados = produtos_selecionados
-                        st.session_state.deposito_nome = deposito_nome
-                        st.session_state.tipo = tipo
-                        st.session_state.etapa = 2
-                        st.rerun()
-
-        elif st.session_state.etapa == 2:            
-            st.write("")
-            st.write(f"**Depósito:** {st.session_state.deposito_nome}")
-            st.write(f"**Tipo:** {st.session_state.tipo}")
-            st.write("### Produtos Selecionados")
-
-            # Obtenha o estoque uma vez para o depósito de origem
-            deposito_id = deposito_map[st.session_state.deposito_nome]
-            estoque = consultar_estoque_batch(deposito_id)
-
-
-
-            with st.form("form_quantidades", clear_on_submit=False):
-                quantidades = {}
-                observacoes = {}
-                for produto_nome in st.session_state.produtos_selecionados:
-                    sku = produto_map[produto_nome]
-                    deposito_id = deposito_map[st.session_state.deposito_nome]
-                    #saldo_atual = consultar_saldo(sku, deposito_id)  # Função a ser implementada
-                    
-                    saldo_atual = estoque.get(produto_nome, 0)  # Obtém o saldo da origem do dicionário estoque
-                    st.markdown(f"{produto_nome} - Saldo atual (Origem): <span style='color:green; font-weight:bold;'>{saldo_atual}</span>", unsafe_allow_html=True)
-                    col1, col2 = st.columns([1, 3])
-                    with col1:
-                        quantidades[produto_nome] = st.number_input(f"Quantidade*", step=1, min_value=1, max_value=100000, key=f"quantidade_{produto_nome}")
-                    with col2:
-                        observacoes[produto_nome] = st.text_input(f"Observações", key=f"observacoes_{produto_nome}")
-
-                col1, col2, col3 = st.columns([1,1,10])
-                with col1:
-                    if st.form_submit_button("💾 Salvar"):
-                        deposito_id = deposito_map[st.session_state.deposito_nome]
-                        tipo = st.session_state.tipo
-                        sucesso = True  # Variável para controlar o sucesso das movimentações
-                        for produto_nome in st.session_state.produtos_selecionados:
-                            sku = produto_map[produto_nome]
-                            quantidade = quantidades[produto_nome]
-                            observacao = observacoes[produto_nome]
-                            if quantidade == 0:
-                                st.error(f"A quantidade para {produto_nome} não pode ser zero.")
-                                sucesso = False
-                            else:
-                                try:
-                                    registrar_movimentacao(sku, deposito_id, quantidade, tipo, observacao)
-                                except ValueError as e:
-                                    st.error(str(e))
-                                    sucesso = False
-                                except Exception as e:
-                                    st.error(f"Erro ao registrar movimentação para {produto_nome}: {str(e)}")
-                                    sucesso = False
-                        if sucesso:
-                            st.session_state.mensagem_sucesso = "Movimentações registradas com sucesso!"
-                            limpar_cache()
-                            st.session_state.etapa = 1
-                            st.rerun()
-                with col2:
-                    if st.form_submit_button("↩  Voltar"):
-                        st.session_state.etapa = 1
-                        st.rerun()
-                #with col3:
-                #    if st.form_submit_button("Limpar Campos"):
-                #        st.session_state.etapa = 1
-                #        st.session_state.produtos_selecionados = []
-                #        st.session_state.deposito_nome = list(deposito_map.keys())[0]
-                #        st.session_state.tipo = [e.value for e in TipoEstoque][0]
-                #        st.rerun()    
-
-    elif menu_opcao == "Transferir Estoque":
-        st.subheader("🔄 Transferir Estoque entre Depósitos")
-
-        if 'etapa' not in st.session_state: #or st.session_state.get('menu_opcao_anterior') != menu_opcao:
-            st.session_state.etapa = 1
-            st.session_state.produtos_selecionados = []
-            st.session_state.origem_nome = list(deposito_map.keys())[0]
-            st.session_state.destino_nome = list(deposito_map.keys())[0]  # Inicializa com o primeiro depósito
-            #st.session_state.menu_opcao_anterior = menu_opcao
-
-        if st.session_state.etapa == 1:
-            origem_nome_default = st.session_state.origem_nome
-            destino_nome_default = st.session_state.destino_nome
-
-            st.write("Selecione o(s) produto(s) e os depósitos de origem e destino")
-
-            origem_nome = st.selectbox("Origem*", options=list(deposito_map.keys()),
-                                        index=list(deposito_map.keys()).index(origem_nome_default),
-                                        key="origem_select")
-
-            # Obtenha o ID do depósito de origem selecionado
-            origem_id = deposito_map[origem_nome]
-            
-
-            # Filtre os produtos que têm saldo maior que zero no depósito de origem               
-            @st.cache_data
-            def get_produtos_disponiveis(origem_id, produto_map):
-                estoque = consultar_estoque_batch(origem_id)
-                return [
-                    produto_nome
-                    for produto_nome, sku in produto_map.items()
-                    if estoque.get(produto_nome, 0) > 0
-                ]
-
-            
-            
-            produtos_disponiveis = get_produtos_disponiveis(origem_id, produto_map)
-
-            if not produtos_disponiveis:
-                st.warning("Não há produtos com saldo disponível neste depósito.")
-            else:
-                produtos_selecionados = st.multiselect(
-                    "Produtos*",
-                    options=produtos_disponiveis,
-                    default=[],
-                    key="produtos_multiselect",
-                    placeholder="Selecione os produtos para transferência"
-                )
-
-
-            destino_nome = st.selectbox("Destino*", options=list(deposito_map.keys()),
-                                        index=list(deposito_map.keys()).index(destino_nome_default),
-                                        key="destino_select"
-                                        )  # Exibe todos os depósitos
-
-            if st.button("Próxima Etapa"):
-                if not produtos_selecionados and produtos_disponiveis:
-                    st.error("Selecione ao menos um produto para transferir.")
-                elif not origem_nome or not destino_nome:
-                    st.error("Todos os campos são obrigatórios.")
-                elif origem_nome == destino_nome:
-                    st.error("Os depósitos de origem e destino devem ser diferentes.")
-                else:
-                    st.session_state.produtos_selecionados = produtos_selecionados
-                    st.session_state.origem_nome = origem_nome
-                    st.session_state.destino_nome = destino_nome
-                    st.session_state.etapa = 2
-                    st.rerun()
-
-
-        elif st.session_state.etapa == 2:
-            st.write("")
-            st.write(f"**Origem:** {st.session_state.origem_nome}")
-            st.write(f"**Destino:** {st.session_state.destino_nome}")
-            st.write("### Produtos Selecionados")
-            
-            # Obtenha o estoque uma vez para o depósito de origem
-            origem_id = deposito_map[st.session_state.origem_nome]
-            estoque = consultar_estoque_batch(origem_id)
-
-
-
-            with st.form("form_quantidades_transferencia", clear_on_submit=False):
-                quantidades = {}
-                observacoes = {}
-                for produto_nome in st.session_state.produtos_selecionados:
-                    sku = produto_map[produto_nome]
-                    origem_id = deposito_map[st.session_state.origem_nome]
-                    #saldo_atual = consultar_saldo(sku, origem_id)  # Obtém o saldo da origem
-                    saldo_atual = estoque.get(produto_nome, 0)  # Obtém o saldo da origem do dicionário estoque
-                    st.markdown(f"{produto_nome} - Saldo atual (Origem): <span style='color:green; font-weight:bold;'>{saldo_atual}</span>", unsafe_allow_html=True)
-                    col1, col2 = st.columns([1, 3])
-                    with col1:
-                        # Garante que a quantidade não seja maior que o saldo atual
-                        max_value = min(100000, saldo_atual)
-                        quantidades[produto_nome] = st.number_input(f"Quantidade*", step=1, min_value=1, max_value=max_value, key=f"quantidade_{produto_nome}")
-                        if quantidades[produto_nome] > saldo_atual:
-                            st.error(f"A quantidade para {produto_nome} não pode ser maior que o saldo atual ({saldo_atual}).")
-                    with col2:
-                        observacoes[produto_nome] = st.text_input(f"Observações", key=f"observacoes_{produto_nome}", value=f"Transferência: {st.session_state.origem_nome} para {st.session_state.destino_nome} - Coleta FULL")
-                    st.markdown("---")    
-
-                col1, col2, col3 = st.columns([1,1,10])
-                with col1:
-                    if st.form_submit_button("✅ Transferir"):
-                        origem_id = deposito_map[st.session_state.origem_nome]
-                        destino_id = deposito_map[st.session_state.destino_nome]
-                        sucesso = True
-                        for produto_nome in st.session_state.produtos_selecionados:
-                            sku = produto_map[produto_nome]
-                            quantidade = quantidades[produto_nome]
-                            observacao = observacoes[produto_nome]
-                            if quantidade == 0:
-                                st.error(f"A quantidade para {produto_nome} não pode ser zero.")
-                                sucesso = False
-                            elif quantidade > saldo_atual:
-                                st.error(f"A quantidade para {produto_nome} não pode ser maior que o saldo atual ({saldo_atual}).")
-                                sucesso = False
-                            else:
-                                try:
-                                    transferir_estoque(sku, origem_id, destino_id, quantidade, observacao)
-                                except ValueError as e:
-                                    st.error(str(e))
-                                    sucesso = False
-                                except Exception as e:
-                                    st.error(f"Erro ao transferir estoque para {produto_nome}: {str(e)}")
-                                    sucesso = False
-                        if sucesso:
-                            st.session_state.mensagem_sucesso = "Transferências realizadas com sucesso!"
-                            limpar_cache()
-                            st.session_state.etapa = 1
-                            st.rerun()
-                with col2:
-                    if st.form_submit_button("↩  Voltar"):
-                        st.session_state.etapa = 1
-                        st.rerun()
-                #with col3:
-                #    if st.form_submit_button("Limpar Campos"):
-                #        st.session_state.etapa = 1
-                #        st.session_state.produtos_selecionados = []
-                #        st.session_state.origem_nome = list(deposito_map.keys())[0]
-                #        st.session_state.destino_nome = [d for d in deposito_map.keys() if d != st.session_state.origem_nome][0]
-                #        st.rerun()
-
-    elif menu_opcao == "Consultar Estoque":
-        st.subheader("🔍 Consultar Estoque Próprio")
-        produto_nome = st.selectbox("Produto", options=["Todos"] + list(produto_map.keys()))
-        deposito_nome = st.selectbox("Depósito", options=["Todos"] + list(deposito_map.keys()))
-
-        if st.button("Consultar"):
-            sku = produto_map[produto_nome] if produto_nome != "Todos" else None
-            deposito_id = deposito_map[deposito_nome] if deposito_nome != "Todos" else None
-
-            try:
-                total, detalhado = consultar_estoque(sku, deposito_id)
-
-                if detalhado:
-                    # Exibir tabela com todos os registros
-                    df = pd.DataFrame(detalhado)
-                    if not df.empty:
-                        df.columns = ["Depósito", "SKU", "Nome do Produto", "Quantidade"]
-
-                        # Filtrar para manter apenas registros com quantidade > 0
-                        df = df[df["Quantidade"] > 0]
-
-                        # Ordenar o DataFrame
-                        df = df.sort_values(by=["Depósito", "Quantidade"], ascending=[True, False])
-
-                        st.table(df)
-                    else:
-                        st.info("Nenhum registro encontrado.")
-                else:
-                    st.info("Nenhum registro encontrado.")
-            except Exception as e:
-                st.error(f"Erro ao consultar estoque: {str(e)}")
-
+        return mercos_rasp.carrega_dados_mercos()
     
 
-    elif menu_opcao == "Histórico de Movimentações":
+    def exibir_tabela_mercos():
 
+        df_estoque_mercos = pd.read_csv("produtos_mercos.csv")        
+        #st.table(df_estoque_mercos)
 
-        def init_session_state():
-            if 'historico' not in st.session_state:
-                st.session_state.historico = None
-            if 'filtros' not in st.session_state:
-                st.session_state.filtros = {
-                    'produto': "Todos",
-                    'deposito': "Todos",
-                    'data_inicio': None,
-                    'data_fim': None
-                }
-            if 'confirmar_exclusao' not in st.session_state:
-                st.session_state.confirmar_exclusao = None
-
-        def exibir_titulos():
-            col1, col2, col3, col4, col5, col6, col7 = st.columns([3, 2, 1, 1, 0.7, 2, 0.7], border=True)
-            col1.markdown("**Produto**")
-            col2.markdown("**Depósito**")
-            col3.markdown("**Tipo**")
-            col4.markdown("**Data/Hora**")
-            col5.markdown("**Quantidade**")
-            col6.markdown("**Observações**")
-            col7.markdown("**Ação**")
-
-        def exibir_linha(row):
-            
-            col1, col2, col3, col4, col5, col6, col7 = st.columns([3, 2, 1, 1, 0.7, 2, 0.7])
-
-            col1.write(row['Produto'])
-            col2.write(row['Depósito'])
-            col3.write(row['Tipo'])
-            col4.write(row['Data/Hora'])
-            #col5.write(row['quantidade'])            
-
-            def format_number(value):
-                return f'<div style="text-align: center; color: #0e9f6e; font-family: monospace;">{pd.to_numeric(value):,.0f}</div>'
-
-            col5.markdown(format_number(row['quantidade']), unsafe_allow_html=True)
-
-            col6.write(row['observacoes'] or "")
-            
-            with col7:
-                # Exibir o botão de exclusão, mas ocultar outros botões até a confirmação
-                if st.session_state.confirmar_exclusao != row['id']:
-                    if st.button("❌ Excluir", key=f"excluir_{row['id']}", use_container_width=True):
-                        st.session_state.confirmar_exclusao = row['id']
-                        st.rerun()
-                else:
-                    st.warning("Confirma a exclusão do lançamento?")
-                    sim, nao = st.columns(2)
-                    with sim:
-                        if st.button("Sim", key=f"confirma_sim_{row['id']}"):
-                            try:
-                                excluir_movimentacao(row['id'])                                
-                                st.success("Lançamento excluído com sucesso!")
-                                limpar_cache()
-                                st.session_state.confirmar_exclusao = None
-                                st.session_state.historico = None  # Força o recarregamento do histórico
-                                st.rerun()
-                            except Exception as e:
-                                st.error(f"Erro ao excluir lançamento: {str(e)}")
-                    with nao:
-                        if st.button("Não", key=f"confirma_nao_{row['id']}"):
-                            st.session_state.confirmar_exclusao = None
-                            st.rerun()
-
-        def carregar_historico(sku, deposito_id, data_inicio, data_fim):
-            historico = consultar_historico_movimentacoes(sku, deposito_id, data_inicio, data_fim)
-            if historico and isinstance(historico, list):
-                df = pd.DataFrame(historico)
-                df['Data/Hora'] = pd.to_datetime(df['data_hora']).dt.strftime("%d/%m/%Y %H:%M:%S")
-                df['Depósito'] = df['deposito_id'].apply(lambda id: next((d.nome for d in depositos if d.id == id), "Desconhecido"))
-                df['Produto'] = df['sku'].apply(lambda sku: next((p.nome for p in produtos if p.sku == sku), "Desconhecido"))
-                df['Tipo'] = df['tipo'].apply(lambda tipo: tipo.value if hasattr(tipo, 'value') else tipo)
-                return df
-            return None
-
-        init_session_state()
-        st.subheader("📋 Histórico de Movimentações")
-        col1, col2 = st.columns(2)
-        with col1:
-            st.session_state.filtros['produto'] = st.selectbox("Produto", options=["Todos"] + list(produto_map.keys()), key="produto_select")
-        with col2:
-            st.session_state.filtros['deposito'] = st.selectbox("Depósito", options=["Todos"] + list(deposito_map.keys()), key="deposito_select")
+        # Garante que a coluna 'Estoque' seja numérica
+        df_estoque_mercos['Estoque'] = pd.to_numeric(df_estoque_mercos['Estoque'], errors='coerce')
         
-        col3, col4 = st.columns(2)
-        with col3:
-            st.session_state.filtros['data_inicio'] = st.date_input("Data Início", value=st.session_state.filtros['data_inicio'], key="data_inicio_input")
-        with col4:
-            st.session_state.filtros['data_fim'] = st.date_input("Data Fim", value=st.session_state.filtros['data_fim'], key="data_fim_input")
+        # Ordena os dados por estoque em ordem decrescente
+        df_estoque_mercos = df_estoque_mercos.sort_values(by='Estoque', ascending=False)
+        
+        # Define a formatação personalizada para a coluna 'Estoque'
+        st.dataframe(
+            df_estoque_mercos,
+            column_config={
+                "Estoque": st.column_config.NumberColumn(
+                    "Estoque",
+                    format="%d",  # Formato inteiro com separador de milhar
+                ),
+            },
+            use_container_width=True,
+            height=600
+        )
+        
+            
+    if menu_opcao == "Consultar Estoque Próprio":
+        st.subheader("🔍 Consultar Estoque Próprio (Mercos)")                
+        
+        try:
+            filepath = "produtos_mercos.csv"
+            timezone = pytz.timezone('America/Sao_Paulo')
+            last_modified_timestamp = os.path.getmtime(filepath)
+            last_modified_datetime = datetime.fromtimestamp(last_modified_timestamp, tz=timezone)
+            st.info(f"Última atualização: {last_modified_datetime.strftime('%d/%m/%Y %H:%M')}")
+        except FileNotFoundError:
+            st.info("Arquivo 'produtos_mercos.csv' não encontrado.")
+        except Exception as e:
+            st.error(f"Erro ao obter a data da última atualização: {e}")
 
-        if st.button("Consultar Histórico") or st.session_state.historico is not None:
-            sku = produto_map.get(st.session_state.filtros['produto']) if st.session_state.filtros['produto'] != "Todos" else None
-            deposito_id = deposito_map.get(st.session_state.filtros['deposito']) if st.session_state.filtros['deposito'] != "Todos" else None
-            data_inicio = datetime.combine(st.session_state.filtros['data_inicio'], datetime.min.time()) if st.session_state.filtros['data_inicio'] else None
-            data_fim = datetime.combine(st.session_state.filtros['data_fim'], datetime.max.time()) if st.session_state.filtros['data_fim'] else None
 
-            st.session_state.historico = carregar_historico(sku, deposito_id, data_inicio, data_fim)
+        st.markdown("---")
 
-            if st.session_state.historico is not None:
-                exibir_titulos()
-                for _, row in st.session_state.historico.iterrows():
-                    exibir_linha(row)                    
-            else:
-                st.info("Nenhuma movimentação encontrada.")
+        # Inicializa o estado da sessão
+        if "confirmacao_ativa" not in st.session_state:
+            st.session_state.confirmacao_ativa = False
 
-    
+        # Botão principal para iniciar o processo de atualização
+        if st.button("🔄 Atualizar Dados", help="Obter dados do sistema Mercos"):
+            st.session_state.confirmacao_ativa = True
+
+        # Exibe a mensagem de confirmação se a flag estiver ativa
+        if st.session_state.confirmacao_ativa:
+            # Cria um containers temporário para a mensagem e os botões
+            confirm_container = st.empty()
+            
+            with confirm_container.container():
+                st.warning("Atenção! Este processo pode levar alguns minutos. Confirma a operação?")
+                # Layout horizontal para os botões "Sim" e "Não"
+                col1, col2 = st.columns([1, 25])
+                confirmar = col1.button("Sim", key="confirmar_atualizacao")
+                cancelar = col2.button("Não", key="cancelar_atualizacao")
+            
+            if confirmar:
+                # Remove a mensagem e botões antes de iniciar o processamento
+                confirm_container.empty()            
+                #msgs_novos_produtos_container.empty()
+                # Desabilita interações adicionais utilizando um spinner de bloqueio
+                with st.spinner("Coletando dados do sistema Mercos..."):
+                    try:
+                        # Chamada para a função que atualiza os dados
+                        atualizar_dados_mercos()                         
+                        #time.sleep(5)                        
+                        st.toast("Dados atualizados com sucesso!", icon="✅")     
+                        # Atualiza a data/hora da última atualização
+                        st.session_state.ultima_atualizacao = datetime.now(pytz.utc)                                           
+
+                    except Exception as e:
+                        st.error(f"Erro ao atualizar os dados do Mercos: {str(e)}")                    
+                st.session_state.confirmacao_ativa = False
+                time.sleep(2)
+                st.rerun()
+            
+            elif cancelar:
+                confirm_container.empty()
+                st.session_state.confirmacao_ativa = False
+                st.rerun()
+                                                                   
+        exibir_tabela_mercos() 
+                                    
+    elif menu_opcao == "Conciliar SKUs":
+        st.subheader("🔄 Conciliação de Produtos")
+        
+        # Carregar arquivo de referência para o online
+        try:
+            skus_referencia = pd.read_csv("skus_mercado_livre_amazon.csv")
+        except FileNotFoundError:
+            st.error("Arquivo 'skus_mercado_livre_amazon.csv' não encontrado.")
+            st.stop()
+        
+        # Carregar os produtos do Mercos
+        produtos_mercos = pd.read_csv("produtos_mercos.csv")
+        try:
+            produtos_conciliados = pd.read_csv("produtos_mercos_conciliados.csv")
+        except FileNotFoundError:
+            produtos_conciliados = pd.DataFrame(columns=[
+                "sku_mercos", "sku_ml_amazon", "produto", "deposito_mercos", "estoque_mercos"
+            ])
+        
+        # Mescla os DataFrames com base nas colunas correspondentes
+        produtos_mercos = produtos_mercos.merge(
+            produtos_conciliados[["sku_mercos", "sku_ml_amazon"]],
+            left_on="SKU",
+            right_on="sku_mercos",
+            how="left"
+        )
+        
+        # Preenche os valores ausentes com strings vazias
+        produtos_mercos["sku_ml_amazon"] = produtos_mercos["sku_ml_amazon"].fillna("")
+        
+        # Filtro aplicado para visualizar: Todos, Conciliados ou Não Conciliados
+        filtro_status = st.selectbox("Filtrar por:", ["Todos", "Conciliados", "Não Conciliados"])
+        
+        # Aplica o filtro
+        if filtro_status == "Conciliados":
+            df_form = produtos_mercos[produtos_mercos["sku_ml_amazon"].str.strip() != ""].copy()
+        elif filtro_status == "Não Conciliados":
+            df_form = produtos_mercos[produtos_mercos["sku_ml_amazon"].str.strip() == ""].copy()
+        else:
+            df_form = produtos_mercos.copy()
+        
+        # Totalizadores
+        total_mercos = len(produtos_mercos)
+        total_conciliados = len(produtos_mercos[produtos_mercos["sku_ml_amazon"].str.strip() != ""])
+        total_nao_conciliados = total_mercos - total_conciliados
+        st.info(f"Total Produtos Mercos: {total_mercos} | Conciliados: {total_conciliados} | Não Conciliados: {total_nao_conciliados}")
+        
+        with st.form("conciliacao_form"):
+            conciliacoes = []
+            skus_online_selecionados = []  # Garante que cada SKU online seja escolhida apenas uma vez
+            
+            for idx, row in df_form.iterrows():
+                # Dividindo a linha em 4 colunas:
+                col_fisico_sku, col_fisico_prod, col_online_sku, col_online_prod = st.columns(4)
+                
+                with col_fisico_sku:
+                    st.text_input("SKU Mercos", value=row["SKU"], disabled=True, key=f"fisico_sku_{idx}")
+                with col_fisico_prod:
+                    st.text_input("Produto Mercos", value=row["Produto"], disabled=True, key=f"fisico_prod_{idx}")
+                
+                # Lista de SKUs já conciliados (excluindo o SKU atual, se existir)
+                skus_conciliados = produtos_conciliados["sku_ml_amazon"].tolist()
+                if row["sku_ml_amazon"] != "":
+                    skus_conciliados.remove(row["sku_ml_amazon"])
+                
+                # Lista de SKUs disponíveis para conciliação
+                skus_disponiveis = skus_referencia[~skus_referencia["SKU"].isin(skus_conciliados)]["SKU"].tolist()
+                
+                # Adiciona o SKU atual (se existir) e a opção vazia
+                available_options = [""] + [row["sku_ml_amazon"]] if row["sku_ml_amazon"] != "" else [""]
+                available_options += skus_disponiveis
+                
+                # Remove duplicatas e garante a ordem
+                available_options = list(dict.fromkeys([opt.strip() for opt in available_options]))
+                
+                # Converte explicitamente para string para evitar ambiguidade
+                sku_mercos_val = str(row["sku_ml_amazon"])
+                
+                label_online = "SKU Online" + (" ✅" if sku_mercos_val != "" else "")
+                with col_online_sku:
+                    # Use st.session_state para armazenar o valor selecionado
+                    key_online_sku = f"online_sku_{idx}"
+                    
+                    # Obtém o valor do st.session_state, se existir, senão usa o valor da linha
+                    default_value = st.session_state.get(key_online_sku, row["sku_ml_amazon"] if row["sku_ml_amazon"] in available_options else "")
+                    
+                    sku_online = st.selectbox(
+                        label_online,
+                        options=available_options,
+                        index=available_options.index(default_value) if default_value in available_options else 0,
+                        key=key_online_sku
+                    )
+                    
+                    # Remove espaços em branco do valor selecionado
+                    sku_online = sku_online.strip()
+                    
+                if sku_online != "":
+                    skus_online_selecionados.append(sku_online)
+                
+                # Auto-preenche o Produto Online, caso um SKU seja selecionado
+                try:
+                    produto_online = skus_referencia.loc[skus_referencia["SKU"] == sku_online, "Produto"].iloc[0] if sku_online != "" else ""
+                except IndexError:
+                    produto_online = ""
+                with col_online_prod:
+                    st.text_input("Produto Online", value=str(produto_online), disabled=True, key=f"online_prod_{idx}")
+                
+                conciliacoes.append({
+                    "sku_mercos": row["SKU"],
+                    "sku_ml_amazon": sku_online,
+                    "produto": row["Produto"],
+                    "deposito_mercos": row["Depósito"],
+                    "estoque_mercos": row["Estoque"]
+                })
+            
+            submitted = st.form_submit_button("💾 Salvar Conciliação")
+        
+        if submitted:
+            # Cria um DataFrame com as novas conciliações
+            df_novos = pd.DataFrame([c for c in conciliacoes])
+            
+            # Carrega o arquivo de conciliações existente
+            try:
+                produtos_conciliados = pd.read_csv("produtos_mercos_conciliados.csv")
+            except FileNotFoundError:
+                produtos_conciliados = pd.DataFrame(columns=[
+                    "sku_mercos", "sku_ml_amazon", "produto", "deposito_mercos", "estoque_mercos"
+                ])
+            
+            # Identifica os SKUs que foram "desconciliados" (SKU online removido)
+            skus_desconciliados = df_novos[df_novos["sku_ml_amazon"] == ""]["sku_mercos"].tolist()
+            
+            # Remove as linhas do arquivo existente que correspondem aos SKUs que foram conciliados agora
+            produtos_conciliados = produtos_conciliados[~produtos_conciliados["sku_mercos"].isin(df_novos["sku_mercos"])]
+            
+            # Remove as linhas dos produtos que foram desconciliados
+            produtos_conciliados = produtos_conciliados[~produtos_conciliados["sku_mercos"].isin(skus_desconciliados)]
+            
+            # Filtra apenas as novas conciliações que possuem SKU online preenchido
+            df_novos = df_novos[df_novos["sku_ml_amazon"] != ""]
+            
+            # Concatena as conciliações antigas com as novas
+            produtos_conciliados = pd.concat([produtos_conciliados, df_novos], ignore_index=True)
+            
+            # Salva o arquivo com todas as conciliações
+            produtos_conciliados.to_csv("produtos_mercos_conciliados.csv", index=False)
+            st.success("✅ Conciliação concluída. Arquivo 'produtos_mercos_conciliados.csv' atualizado.")
+            st.rerun()
+
 
 def main():
     setup_environment()
@@ -1024,19 +618,7 @@ def main():
             ["Dashboard - Visão Integrada de Estoque", "Gestão Estoque Próprio"],
             index=0
         )
-
-        if opcao == "Gestão Estoque Próprio":
-            opcao_gestao = st.radio(
-                "Selecione a opção:",
-                ["Depósitos", "Produtos", "Estoque"],
-                index=0
-            )
-        
-        #st.markdown("---")
-        #if st.button("🔄 Atualizar Dados", help="Recarregar todos os dados", use_container_width=True):
-        #    carregar_dados_completos.clear()
-        #    st.rerun()
-    
+                            
     # Controle de exibição
     if opcao == "Dashboard - Visão Integrada de Estoque":
         apis = {
@@ -1045,12 +627,7 @@ def main():
         }
         exibir_visao_integrada(apis)
     elif opcao == "Gestão Estoque Próprio":
-        if opcao_gestao == "Depósitos":
-            exibir_gestao_depositos()
-        elif opcao_gestao == "Produtos":
-            exibir_gestao_produtos()
-        elif opcao_gestao == "Estoque":
-            exibir_gestao_estoque()     
+        exibir_gestao_estoque()     
 
 if __name__ == "__main__":
     main()
