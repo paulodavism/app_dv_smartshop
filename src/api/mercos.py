@@ -65,6 +65,15 @@ class MercosWebScraping():
             input_senha.send_keys(senha)    
             
             driver.find_element(By.ID, "botaoEfetuarLogin").click()
+
+            # Aguardar alguns segundos para garantir o redirecionamento
+            time.sleep(3)
+
+            # Log da URL atual
+            logging.info(f"URL após o login: {driver.current_url}")
+
+            # Log do HTML da página (útil para identificar problemas)
+            logging.info(f"HTML da página: {driver.page_source[:1000]}")  # Exibe os primeiros 1000 caracteres
             
             # Verificação ajustada para URL real
             try:
