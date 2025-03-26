@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.action_chains import ActionChains
 import os
 from dotenv import load_dotenv
 import pandas as pd
@@ -29,11 +30,15 @@ class MercosWebScraping():
         try:
             # Configurar opções do Chrome para modo headless
             chrome_options = Options()
-            chrome_options.add_argument("--headless")  # Executar em modo invisível
+            chrome_options.add_argument("--headless")
             chrome_options.add_argument("--disable-gpu")
             chrome_options.add_argument("--no-sandbox")
             chrome_options.add_argument("--disable-dev-shm-usage")
             chrome_options.add_argument("--remote-debugging-port=9222")
+            chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+            chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            chrome_options.add_experimental_option("useAutomationExtension", False)
+            chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
 
             # Inicializar o WebDriver (sem especificar o caminho do chromedriver)
             driver = webdriver.Chrome(options=chrome_options)
@@ -71,17 +76,38 @@ class MercosWebScraping():
                 )
                 logging.info("Campo de senha encontrado.")
 
+                # Preencher credenciais
+                input_email.send_keys(email)
+                logging.info(f"Email preenchido: {email}")
+                input_senha.send_keys(senha)
+                logging.info("Senha preenchida.")
+
                 # Aguardar o botão de login
                 btn_login = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, "botaoEfetuarLogin"))
                 )
                 logging.info("Botão de login encontrado.")
 
-                # Preencher credenciais e clicar no botão de login
-                input_email.send_keys(email)
-                input_senha.send_keys(senha)
-                btn_login.click()
-                logging.info("Credenciais enviadas e botão de login clicado.")
+                # Clicar no botão de login
+                #btn_login.click()                
+
+                # Mover o mouse até o botão de login e clicar
+                actions = ActionChains(driver)
+                actions.move_to_element(btn_login).pause(1).click().perform()
+                logging.info("Movimento humano simulado e botão de login clicado.")
+
+                logging.info("Botão de login clicado.")
+
+                # Aguardar alguns segundos para garantir o processamento
+                time.sleep(5)
+
+                # Log da URL atual
+                logging.info(f"URL após o login: {driver.current_url}")
+
+                # Log do HTML da página (útil para identificar problemas)
+                logging.info(f"HTML da página: {driver.page_source[:1000]}")  # Exibe os primeiros 1000 caracteres
+
+
             except TimeoutException as e:
                 logging.error(f"Elemento não encontrado: {e}")
                 driver.quit()
